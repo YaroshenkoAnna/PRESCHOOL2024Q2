@@ -1,0 +1,18 @@
+@use "../../assets/css/variables.scss";
+
+.carousel {
+  &__button {
+    border-radius: 100px;
+    border: 2px solid variables.$color-primary;
+    align-self: center;
+    padding: 0;
+  }
+
+  &__arrow {
+    padding: 23px 19px 19px;
+  }
+
+  &__arrow_right {
+    transform: scale(-1, 1);
+  }
+}

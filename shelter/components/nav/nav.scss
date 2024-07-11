@@ -1,0 +1,37 @@
+@use "../../assets/css/variables.scss";
+
+.nav {
+  .nav__items {
+    display: flex;
+    color: variables.$color-dark-s;
+    /* paragraph-l */
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 24px */
+  }
+
+  &__item {
+    list-style: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__item:hover {
+    color: variables.$color-light-s;
+  }
+
+  &__item:first-child {
+    color: variables.$color-light-s;
+    border-bottom: 3px solid variables.$color-primary;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 35px;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+}

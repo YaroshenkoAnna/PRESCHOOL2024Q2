@@ -1,0 +1,132 @@
+@use "../../assets/css/variables.scss";
+
+.section {
+  &_light-xl {
+    background: variables.$color-light-xl;
+  }
+
+  &_light-l {
+    background: variables.$color-light-l;
+  }
+
+  &__container {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  &__wraper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__wraper_row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__carousel {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  &__content {
+    padding-left: 120px;
+    max-width: 430px;
+  }
+
+  &__title {
+    color: variables.$color-dark-l;
+    font-family: Georgia;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 45.5px */
+    letter-spacing: 2.1px;
+    max-width: 400px;
+  }
+
+  &__title_middle {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__description {
+    color: variables.$color-dark-xl;
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 24px */
+
+    padding-top: 25px;
+  }
+
+  &__card {
+    margin: 0 45px;
+  }
+
+  &__button {
+    text-align: center;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 60px;
+    margin-top: -55px;
+  }
+
+  &__item-image {
+    padding-bottom: 30px;
+  }
+
+  &__item {
+    flex-basis: 20%;
+    text-align: center;
+    list-style: none;
+    margin-top: 55px;
+  }
+
+  &__item-title {
+    color: variables.$color-dark-l;
+
+    font-family: Georgia;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%; /* 23px */
+    letter-spacing: 1.2px;
+  }
+
+  &__content_s {
+    padding-left: 30px;
+  }
+
+  &__content-title {
+    color: variables.$color-dark-l;
+
+    font-family: Georgia;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%; /* 16.5px */
+    letter-spacing: 0.9px;
+
+    margin: 20px 0;
+  }
+
+
+  &__content-description {
+    color: variables.$color-dark-m;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 18px; /* 150% */
+
+    max-width: 380px;
+    padding-top: 20px;
+  }
+}
