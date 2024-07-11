@@ -1,0 +1,32 @@
+@use "../../assets/css/variables.scss";
+
+.card {
+  border-radius: 9px;
+  background: variables.$color-light-s;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover &__button {
+    background: variables.$color-primary-light;
+    border-color: variables.$color-primary-light;
+  }
+
+  &__title {
+    color: variables.$color-dark-l;
+    text-align: center;
+    font-family: Georgia;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    padding: 30px 0;
+  }
+
+  &__button {
+    margin-bottom: 30px;
+  }
+}

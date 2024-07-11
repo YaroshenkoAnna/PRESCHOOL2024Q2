@@ -1,0 +1,18 @@
+@use "variables.scss";
+@use "../fonts/fonts.css";
+@use "../../components/container/container.scss";
+@use "../../components/main/main.scss";
+@use "../../components/header/header.scss";
+@use "../../components/nav/nav.scss";
+@use "../../components/button/button.scss";
+@use "../../components/section/section.scss";
+@use "../../components/card/card.scss";
+@use "../../components/carousel/carousel.scss";
+@use "../../components/footer/footer.scss";
+
+html {
+  width: 100vw;
+  height: 100vh;
+
+  scroll-behavior: smooth;
+}
