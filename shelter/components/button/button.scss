@@ -11,6 +11,7 @@
   font-weight: 400;
   line-height: 130%; /* 22.1px */
   letter-spacing: 1.02px;
+  white-space: nowrap;
 
   transition: all 0.3s ease-in-out;
 
@@ -27,6 +28,7 @@
   &_secondary {
     background-color: variables.$color-light-s;
     border: 2px solid variables.$color-primary;
+    padding: 14px 43px;
   }
 
   &__link {

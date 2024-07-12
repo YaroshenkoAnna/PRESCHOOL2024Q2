@@ -1,21 +1,25 @@
 @use "../../assets/css/variables.scss";
 
 .footer {
-  background: url(../../assets/images/start-screen-gradient-background.png),
-    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%) 0%, #211f20;
+  background: url("../../assets/images/start-screen-gradient-background.png"),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 
   &__wraper {
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
+    flex-wrap: wrap;
   }
 
   &__content {
-    padding-top: 16px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 66px;
   }
 
   &__title {
-    max-width: 300px;
     color: variables.$color-light-xl;
 
     font-family: Georgia;
@@ -28,11 +32,7 @@
 
   &__image {
     align-self: flex-end;
-  }
-
-  &__item {
-    list-style: none;
-    padding-top: 40px;
+    object-fit: contain;
   }
 
   &__link {
@@ -48,6 +48,15 @@
     justify-content: flex-start;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+    position: relative;
+  }
+
+  &__content:first-child &__link-description {
+    padding-left: 60px;
+  }
+
+  &__link-description {
+    padding-left: 40px;
   }
 
   &__link:hover {
@@ -60,6 +69,9 @@
     padding-right: 20px;
     fill: variables.$color-primary;
     transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    margin-top: -1rem;
   }
 
   &__link:hover &__icon {
