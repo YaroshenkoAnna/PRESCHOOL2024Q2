@@ -27,11 +27,12 @@
 
   &__carousel {
     margin-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 59px;
+    width: 100%;
   }
 
   &__content {
-    padding-left: 120px;
+    padding: 13px 0 0 10%;
     max-width: 430px;
   }
 
@@ -62,10 +63,6 @@
     padding-top: 25px;
   }
 
-  &__card {
-    margin: 0 45px;
-  }
-
   &__button {
     text-align: center;
   }
@@ -75,18 +72,18 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 60px;
-    margin-top: -55px;
+    margin-top: -56px;
   }
 
   &__item-image {
-    padding-bottom: 30px;
+    padding-bottom: 24px;
   }
 
   &__item {
-    flex-basis: 20%;
+    padding: 0 60px;
     text-align: center;
     list-style: none;
-    margin-top: 55px;
+    margin-top: 56px;
   }
 
   &__item-title {
@@ -117,7 +114,6 @@
     margin: 20px 0;
   }
 
-
   &__content-description {
     color: variables.$color-dark-m;
     font-family: Arial;
@@ -128,5 +124,11 @@
 
     max-width: 380px;
     padding-top: 20px;
+  }
+
+  &__image {
+    object-fit: contain;
+    max-width: 50%;
+    height: auto;
   }
 }
