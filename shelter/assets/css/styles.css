@@ -414,13 +414,16 @@
   justify-content: space-between;
 }
 .carousel__button {
-  border-radius: 100px;
-  border: 2px solid var(--color-primary);
   align-self: center;
-  padding: 0;
+}
+.carousel__button:first-child {
+  margin-right: 7px;
+}
+.carousel__button:last-child {
+  margin-left: 7px;
 }
 .carousel__arrow {
-  padding: 23px 19px 19px;
+  padding: 19px;
 }
 .carousel__arrow_right {
   transform: scale(-1, 1);
