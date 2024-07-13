@@ -222,10 +222,6 @@
   border: 2px solid var(--color-primary);
   padding: 14px 43px;
 }
-.button__link {
-  color: inherit;
-  text-decoration: inherit;
-}
 
 .pay-button {
   border-radius: 9px;
@@ -258,6 +254,7 @@
   grid-template-columns: repeat(5, 1fr);
   column-gap: 20px;
 }
+
 .section_light-xl {
   background: var(--color-light-xl);
 }

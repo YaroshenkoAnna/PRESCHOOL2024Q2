@@ -57,10 +57,6 @@
     padding: 14px 43px;
   }
 
-  &__link {
-    color: inherit;
-    text-decoration: inherit;
-  }
 }
 
 .pay-button {
@@ -98,6 +94,5 @@
   grid-template-columns: repeat(5, 1fr);
   column-gap: 20px;
 
-  &__button {
-  }
+ 
 }
