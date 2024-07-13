@@ -6,11 +6,17 @@
   left: 0;
   right: 0;
 
+  &_white {
+    position: static;
+    background: variables.$color-light-xl;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   &__title {
@@ -22,6 +28,10 @@
     line-height: 110%; /* 35.2px */
     letter-spacing: 1.92px;
     transition: all 0.3s ease-in-out;
+  }
+
+  &__title_dark {
+    color: variables.$color-dark-l;
   }
 
   &__text {
@@ -37,6 +47,10 @@
     text-align: center;
   }
 
+  &__text_dark {
+    color: variables.$color-dark-3xl;
+  }
+
   &__logo {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -50,7 +64,17 @@
     color: variables.$color-light-xl;
   }
 
+  &__logo:hover &__title_dark {
+    color: variables.$color-dark-l;
+    text-shadow: 2px 5px 5px rgb(41, 39, 39);
+  }
+
   &__logo:hover &__text {
     color: variables.$color-primary;
+  }
+
+  &__logo:hover &__text_dark {
+    color: variables.$color-dark-3xl;
+    text-shadow: 2px 5px 5px rgb(41, 39, 39);
   }
 }
