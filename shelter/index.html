@@ -25,7 +25,7 @@
             </a>
             <nav class="header__nav nav">
               <ul class="nav__items">
-                <li class="nav__item">
+                <li class="nav__item nav__item_active">
                   <a href="#" class="nav__link">About the shelter</a>
                 </li>
                 <li class="nav__item">
@@ -56,8 +56,11 @@
                   extremely wide and open heart. He or she will love you more
                   than anybody else in the world, you will see!
                 </p>
-                <button class="not-only__button button button_primary">
-                  <a href="#friends" class="button__link"> Make a friend</a>
+                <button
+                  class="not-only__button button button_primary"
+                  onclick="document.location='#friends'"
+                >
+                  Make a friend
                 </button>
               </div>
 
@@ -105,13 +108,13 @@
                 are looking for a house
               </h3>
               <div class="carousel section__carousel">
-                <button class="button carousel__button">
+                <div href="#" class="button button_rund carousel__button">
                   <img
                     src="assets/images/Arrow.svg"
                     alt="arrow"
                     class="carousel__arrow carousel_arrow_left"
                   />
-                </button>
+                </div>
                 <div class="carousel__wraper">
                   <div class="section__card card">
                     <img
@@ -147,18 +150,19 @@
                     </button>
                   </div>
                 </div>
-                <button class="button carousel__button">
+                <div href="#" class="button button_rund carousel__button">
                   <img
                     src="assets/images/Arrow.svg"
                     alt="arrow"
                     class="carousel__arrow carousel__arrow_right"
                   />
-                </button>
+                </div>
               </div>
-              <button class="section__button button button_primary">
-                <a href="pets.html" class="button__link">
-                  Get to know the rest</a
-                >
+              <button
+                class="section__button button button_primary"
+                onclick="document.location='pets.html'"
+              >
+                Get to know the rest
               </button>
             </div>
           </div>
@@ -343,7 +347,7 @@
                   <use xlink:href="assets/images/sprite.svg#icon-marker"></use>
                 </svg>
                 <span class="footer__link-description">
-                  +18 South Park, London</span
+                  18 South Park, London</span
                 ></a
               >
             </div>

@@ -15,6 +15,32 @@
 
   transition: all 0.3s ease-in-out;
 
+  &_rund {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: variables.$color-dark-3xl;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 1.2px;
+    border: 2px solid variables.$color-primary;
+    text-decoration: none;
+  }
+
+  &_rund[disabled] {
+    color: variables.$color-dark-s;
+    border-color: variables.$color-dark-s;
+    pointer-events: none;
+  }
+
+  &_active {
+    background-color: variables.$color-primary;
+    pointer-events: none;
+  }
+
   &:hover {
     background: variables.$color-primary-light;
     border-color: variables.$color-primary-light;
@@ -31,10 +57,6 @@
     padding: 14px 43px;
   }
 
-  &__link {
-    color: inherit;
-    text-decoration: inherit;
-  }
 }
 
 .pay-button {
@@ -65,4 +87,12 @@
     right: 0;
     margin: auto 0;
   }
+}
+
+.paginator {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
+
+ 
 }

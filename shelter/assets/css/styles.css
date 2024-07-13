@@ -8,6 +8,7 @@
   --color-light-l: #f6f6f6;
   --color-dark-m: #b2b2b2;
   --color-primary-light: #fddcc4;
+  --color-dark-3xl: #292929;
 }
 
 @font-face {
@@ -70,11 +71,16 @@
   left: 0;
   right: 0;
 }
+.header_white {
+  position: static;
+  background: var(--color-light-xl);
+}
 .header__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 .header__title {
   color: var(--color-primary);
@@ -85,6 +91,9 @@
   line-height: 110%; /* 35.2px */
   letter-spacing: 1.92px;
   transition: all 0.3s ease-in-out;
+}
+.header__title_dark {
+  color: var(--color-dark-l);
 }
 .header__text {
   color: var(--color-light-xl);
@@ -98,6 +107,9 @@
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
+.header__text_dark {
+  color: var(--color-dark-3xl);
+}
 .header__logo {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -108,13 +120,26 @@
 .header__logo:hover .header__title {
   color: var(--color-light-xl);
 }
+.header__logo:hover .header__title_dark {
+  color: var(--color-dark-l);
+  text-shadow: 2px 5px 5px rgb(41, 39, 39);
+}
 .header__logo:hover .header__text {
   color: var(--color-primary);
 }
+.header__logo:hover .header__text_dark {
+  color: var(--color-dark-3xl);
+  text-shadow: 2px 5px 5px rgb(41, 39, 39);
+}
 
-.nav .nav__items {
-  display: flex;
+.nav {
   color: var(--color-dark-s);
+}
+.nav_dark {
+  color: var(--color-dark-l);
+}
+.nav__items {
+  display: flex;
   /* paragraph-l */
   font-family: Arial;
   font-size: 15px;
@@ -129,9 +154,16 @@
 .nav__item:hover {
   color: var(--color-light-s);
 }
-.nav__item:first-child {
+.nav_dark .nav__item:hover {
+  color: var(--color-dark-3xl);
+}
+.nav__item_active {
   color: var(--color-light-s);
   border-bottom: 3px solid var(--color-primary);
+  pointer-events: none;
+}
+.nav_dark .nav__item_active {
+  color: var(--color-dark-3xl);
 }
 .nav__item:not(:last-child) {
   margin-right: 36px;
@@ -154,6 +186,29 @@
   white-space: nowrap;
   transition: all 0.3s ease-in-out;
 }
+.button_rund {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: var(--color-dark-3xl);
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 1.2px;
+  border: 2px solid var(--color-primary);
+  text-decoration: none;
+}
+.button_rund[disabled] {
+  color: var(--color-dark-s);
+  border-color: var(--color-dark-s);
+  pointer-events: none;
+}
+.button_active {
+  background-color: var(--color-primary);
+  pointer-events: none;
+}
 .button:hover {
   background: var(--color-primary-light);
   border-color: var(--color-primary-light);
@@ -166,10 +221,6 @@
   background-color: var(--color-light-s);
   border: 2px solid var(--color-primary);
   padding: 14px 43px;
-}
-.button__link {
-  color: inherit;
-  text-decoration: inherit;
 }
 
 .pay-button {
@@ -196,6 +247,12 @@
   bottom: 0;
   right: 0;
   margin: auto 0;
+}
+
+.paginator {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
 }
 
 .section_light-xl {
@@ -343,15 +400,27 @@
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+  flex-wrap: wrap;
+}
+.carousel__wraper_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 40px;
+  row-gap: 30px;
+  justify-content: space-between;
 }
 .carousel__button {
-  border-radius: 100px;
-  border: 2px solid var(--color-primary);
   align-self: center;
-  padding: 0;
+}
+.carousel__button:first-child {
+  margin-right: 7px;
+}
+.carousel__button:last-child {
+  margin-left: 7px;
 }
 .carousel__arrow {
-  padding: 23px 19px 19px;
+  padding: 19px;
 }
 .carousel__arrow_right {
   transform: scale(-1, 1);
@@ -371,7 +440,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 66px;
+  padding-bottom: 60px;
 }
 .footer__title {
   color: var(--color-light-xl);
@@ -396,15 +465,9 @@
   letter-spacing: 1.2px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  position: relative;
-}
-.footer__content:first-child .footer__link-description {
-  padding-left: 60px;
-}
-.footer__link-description {
-  padding-left: 40px;
 }
 .footer__link:hover {
   cursor: pointer;
@@ -415,9 +478,6 @@
   padding-right: 20px;
   fill: var(--color-primary);
   transition: all 0.3s ease-in-out;
-  position: absolute;
-  top: 50%;
-  margin-top: -1rem;
 }
 .footer__link:hover .footer__icon {
   fill: var(--color-light-l);

@@ -1,9 +1,14 @@
 @use "../../assets/css/variables.scss";
 
 .nav {
-  .nav__items {
+  color: variables.$color-dark-s;
+
+  &_dark {
+    color: variables.$color-dark-l;
+  }
+
+  &__items {
     display: flex;
-    color: variables.$color-dark-s;
     /* paragraph-l */
     font-family: Arial;
     font-size: 15px;
@@ -21,9 +26,18 @@
     color: variables.$color-light-s;
   }
 
-  &__item:first-child {
+  &_dark &__item:hover {
+    color: variables.$color-dark-3xl;
+  }
+
+  &__item_active {
     color: variables.$color-light-s;
     border-bottom: 3px solid variables.$color-primary;
+    pointer-events: none;
+  }
+
+  &_dark &__item_active {
+    color: variables.$color-dark-3xl;
   }
 
   &__item:not(:last-child) {
