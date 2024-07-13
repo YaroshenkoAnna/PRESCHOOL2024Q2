@@ -10,6 +10,16 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
+    flex-wrap: wrap;
+  }
+
+  &__wraper_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 40px;
+    row-gap: 30px;
+    justify-content: space-between;
   }
 
   &__button {

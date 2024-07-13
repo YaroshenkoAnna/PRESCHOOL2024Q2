@@ -160,6 +160,7 @@
 .nav__item_active {
   color: var(--color-light-s);
   border-bottom: 3px solid var(--color-primary);
+  pointer-events: none;
 }
 .nav_dark .nav__item_active {
   color: var(--color-dark-3xl);
@@ -184,6 +185,29 @@
   letter-spacing: 1.02px;
   white-space: nowrap;
   transition: all 0.3s ease-in-out;
+}
+.button_rund {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  color: var(--color-dark-3xl);
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 1.2px;
+  border: 2px solid var(--color-primary);
+  text-decoration: none;
+}
+.button_rund[disabled] {
+  color: var(--color-dark-s);
+  border-color: var(--color-dark-s);
+  pointer-events: none;
+}
+.button_active {
+  background-color: var(--color-primary);
+  pointer-events: none;
 }
 .button:hover {
   background: var(--color-primary-light);
@@ -229,6 +253,11 @@
   margin: auto 0;
 }
 
+.paginator {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
+}
 .section_light-xl {
   background: var(--color-light-xl);
 }
@@ -374,6 +403,15 @@
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
+  flex-wrap: wrap;
+}
+.carousel__wraper_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 40px;
+  row-gap: 30px;
+  justify-content: space-between;
 }
 .carousel__button {
   border-radius: 100px;
