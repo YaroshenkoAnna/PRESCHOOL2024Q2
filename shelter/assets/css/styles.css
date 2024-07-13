@@ -440,7 +440,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 66px;
+  padding-bottom: 60px;
 }
 .footer__title {
   color: var(--color-light-xl);
@@ -465,15 +465,9 @@
   letter-spacing: 1.2px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  position: relative;
-}
-.footer__content:first-child .footer__link-description {
-  padding-left: 60px;
-}
-.footer__link-description {
-  padding-left: 40px;
 }
 .footer__link:hover {
   cursor: pointer;
@@ -484,9 +478,6 @@
   padding-right: 20px;
   fill: var(--color-primary);
   transition: all 0.3s ease-in-out;
-  position: absolute;
-  top: 50%;
-  margin-top: -1rem;
 }
 .footer__link:hover .footer__icon {
   fill: var(--color-light-l);
