@@ -1,4 +1,5 @@
 @use "variables.scss";
+@use "mixins.scss";
 @use "../fonts/fonts.css";
 @use "../../components/container/container.scss";
 @use "../../components/main/main.scss";
@@ -11,8 +12,7 @@
 @use "../../components/footer/footer.scss";
 
 html {
-  width: 100vw;
-  height: 100vh;
-
+  
+  
   scroll-behavior: smooth;
 }

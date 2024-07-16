@@ -1,28 +1,11 @@
-@mixin square($size: 24px) {
-  width: $size;
-  height: $size;
-}
-
-@mixin flexCenterXY() {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin hideNativeControl() {
-  position: absolute;
-  appearance: none;
-  outline: none;
-  clip: rect(0, 0, 0, 0);
-}
-
+$xs: 320px;
 $sm: 576px;
 $md: 768px;
-$xl: 1280px;
-$xxl: 1400px;
+$lg: 1024px;
+$xl: 1200px;
 
 @mixin device($breakpoint) {
   @media only screen and (max-width: $breakpoint) {
-    @content
+    @content;
   }
 }

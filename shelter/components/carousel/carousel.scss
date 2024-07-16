@@ -1,4 +1,5 @@
 @use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
 
 .carousel {
   display: flex;
@@ -40,5 +41,21 @@
 
   &__arrow_right {
     transform: scale(-1, 1);
+  }
+}
+
+@include mixins.device(mixins.$md) {
+  .carousel {
+    &__button:first-child {
+      margin-right: 12px;
+    }
+
+    &__button:last-child {
+      margin-left: 12px;
+    }
+
+    &__wraper {
+      justify-content: space-between;
+    }
   }
 }

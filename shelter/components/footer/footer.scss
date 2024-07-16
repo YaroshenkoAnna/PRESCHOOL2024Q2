@@ -1,4 +1,5 @@
 @use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
 
 .footer {
   background: url("../../assets/images/start-screen-gradient-background.png"),
@@ -51,7 +52,6 @@
     transition: all 0.3s ease-in-out;
   }
 
-
   &__link:hover {
     cursor: pointer;
     color: variables.$color-light-l;
@@ -66,5 +66,24 @@
 
   &__link:hover &__icon {
     fill: variables.$color-light-l;
+  }
+}
+
+@include mixins.device(mixins.$md) {
+  .footer {
+    &__wraper {
+      padding-top: 30px;
+      justify-content: space-around;
+    }
+  }
+}
+
+@include mixins.device(mixins.$lg) {
+  .footer {
+    &__content {
+      padding: 0 10px 65px;
+      height: 234px;
+
+    }
   }
 }
