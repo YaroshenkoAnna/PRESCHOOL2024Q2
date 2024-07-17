@@ -2,8 +2,9 @@
 @use "../../assets/css/mixins.scss";
 
 .footer {
-  background: url("../../assets/images/start-screen-gradient-background.png"),
-    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+  background: url("../../assets/images/start-gradient-background.png"),
+    radial-gradient(549.89% 73.65% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%),
+    #211f20;
 
   &__wraper {
     display: flex;
@@ -83,7 +84,6 @@
     &__content {
       padding: 0 10px 65px;
       height: 234px;
-
     }
   }
 }
