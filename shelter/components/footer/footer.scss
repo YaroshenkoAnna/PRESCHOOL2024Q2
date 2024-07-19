@@ -2,10 +2,11 @@
 @use "../../assets/css/mixins.scss";
 
 .footer {
-  background: url("../../assets/images/start-gradient-background.png"),
-    radial-gradient(549.89% 73.65% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%),
-    #211f20;
-
+  background: url("../../assets/images/start-screen-gradient-background.png"),
+    (
+      radial-gradient(100.89% 215.65% at 5.73% 31%, #513d2f 0%, #1a1a1c 100%),
+      #211f20
+    );
   &__wraper {
     display: flex;
     justify-content: space-between;
@@ -30,6 +31,8 @@
     font-weight: 400;
     line-height: 130%; /* 45.5px */
     letter-spacing: 2.1px;
+
+    max-width: 280px;
   }
 
   &__image {
@@ -70,7 +73,7 @@
   }
 }
 
-@include mixins.device(mixins.$md) {
+@include mixins.device(mixins.$md3) {
   .footer {
     &__wraper {
       padding-top: 30px;
@@ -84,6 +87,52 @@
     &__content {
       padding: 0 10px 65px;
       height: 234px;
+    }
+  }
+}
+
+@include mixins.device(mixins.$sm1) {
+  .footer {
+    &__title {
+      text-align: center;
+      padding-bottom: 40px;
+      font-size: 25px;
+      letter-spacing: 1.5px;
+      align-self: center;
+    }
+
+    &__content {
+      align-items: center;
+      padding-top: 0;
+      padding-bottom: 0;
+      height: auto;
+    }
+
+    &__content:nth-child(2) {
+      margin: 0 -10px 5px;
+      align-items: flex-start;
+    }
+
+    &__content:nth-child(2) &__title {
+      padding-bottom: 38px;
+    }
+
+     &__content:nth-child(2) &__link {
+      margin-left: -4px;
+    }
+
+    &__link {
+      padding-bottom: 40px;
+    }
+  }
+}
+
+@include mixins.device(mixins.$xs) {
+  .footer {
+    &__image {
+      width: 260px;
+      height: 269px;
+      margin-top: -4px;
     }
   }
 }

@@ -11,3 +11,9 @@
     padding: 0 30px;
   }
 }
+
+@include mixins.device(mixins.$sm) {
+  .container {
+    padding: 0 10px;
+  }
+}

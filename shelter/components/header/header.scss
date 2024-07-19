@@ -1,4 +1,5 @@
 @use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
 
 .header {
   position: absolute;
@@ -76,5 +77,14 @@
   &__logo:hover &__text_dark {
     color: variables.$color-dark-3xl;
     text-shadow: 2px 5px 5px rgb(41, 39, 39);
+  }
+}
+
+@include mixins.device(mixins.$sm) {
+  .header {
+    &__content {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 }
