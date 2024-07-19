@@ -128,12 +128,11 @@
     padding-top: 20px;
   }
 
-  &__image-wraper {
-    max-width: 50%;
-  }
+  
 
   &__image {
-    max-width: 100%;
+    max-width: 50%;
+    flex-shrink: 0;
     object-fit: contain;
     height: auto;
   }
@@ -163,6 +162,8 @@
     &__content-description {
       margin-bottom: 60px;
     }
+
+
 
     &__image {
       max-width: 100%;
@@ -228,7 +229,7 @@
 
     &__container {
       padding-top: 42px;
-      padding-bottom: 41px;
+      padding-bottom: 42px;
     }
 
     &__gallery {
@@ -253,9 +254,10 @@
       margin-right: 15px;
     }
 
-    &__image-wraper {
-      max-width: 100%;
-      margin: 0 6px;
+    &__image{
+      display: block;
+      max-width: 96%;
+    
     }
 
     &__items {
@@ -292,10 +294,7 @@
   }
 }
 
-
-@include mixins.device(mixins.$xs){
-  .section{
-    
+@include mixins.device(mixins.$xs) {
+  .section {
   }
-
 }

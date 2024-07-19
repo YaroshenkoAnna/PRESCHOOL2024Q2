@@ -53,6 +53,8 @@
 
 @include mixins.device(mixins.$md2) {
   .nav {
-    display: none;
+    &__items{
+      display: none;
+    }
   }
 }

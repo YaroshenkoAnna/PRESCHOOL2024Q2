@@ -24,8 +24,16 @@
               <h1 class="header__title">Cozy House</h1>
               <p class="header__text">Shelter for pets in Boston</p>
             </a>
-            <input type="checkbox" id="burger-menu" class="burger-menu" />
             <nav class="header__nav nav">
+              <div class="burger-menu">
+                <input
+                  type="checkbox"
+                  id="burger-checkbox"
+                  class="burger-menu__checkbox"
+                />
+                <label for="burger-checkbox" class="burger-menu__label"></label>
+              </div>
+
               <ul class="nav__items">
                 <li class="nav__item nav__item_active">
                   <a href="#" class="nav__link">About the shelter</a>
@@ -77,13 +85,12 @@
         <section class="section section_light-xl">
           <div class="container section__container">
             <div class="section__wraper">
-              <div class="section__image-wraper">
-                <img
-                  src="assets/images/about-pets.png"
-                  alt="about pets"
-                  class="section__image"
-                />
-              </div>
+              <img
+                src="assets/images/about-pets.png"
+                alt="about pets"
+                class="section__image"
+              />
+
               <div class="section__content">
                 <h3 class="section__title">
                   About the shelter <br />
@@ -259,13 +266,11 @@
         <section class="section section_light-l">
           <div class="container section__container">
             <div class="section__wraper">
-              <div class="section__image-wraper">
-                <img
-                  src="assets/images/donation-dog.png"
-                  alt="Dog"
-                  class="section__image"
-                />
-              </div>
+              <img
+                src="assets/images/donation-dog.png"
+                alt="Dog"
+                class="section__image"
+              />
 
               <div class="section__content_s">
                 <h3 class="section__title">
