@@ -99,4 +99,12 @@
   .paginator {
     column-gap: 10px;
   }
+
+  .pay-button {
+    &__number {
+      font-size: 15px;
+      line-height: 110%; /* 16.5px */
+      letter-spacing: 0.9px;
+    }
+  }
 }

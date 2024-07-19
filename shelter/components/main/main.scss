@@ -66,3 +66,28 @@
     }
   }
 }
+
+@include mixins.device(mixins.$sm) {
+  .not-only {
+    &__title {
+      font-size: 25px;
+      letter-spacing: 1.256px;
+      text-align: center;
+    }
+
+    &__description {
+      text-align: center;
+    }
+
+    &__image {
+      width: 260px;
+      max-width: 100%;
+    }
+
+    &__button {
+      margin-bottom: 104px;
+    }
+    
+
+  }
+}

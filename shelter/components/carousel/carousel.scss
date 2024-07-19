@@ -59,3 +59,30 @@
     }
   }
 }
+
+@include mixins.device(mixins.$sm) {
+  .carousel {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    &__wraper {
+      justify-content: center;
+    }
+
+    &__button {
+      order: 10;
+    }
+  }
+}
+
+@include mixins.device(mixins.$md4) {
+  .carousel {
+    &__button:first-child {
+      margin-right: 40px;
+    }
+    &__button:last-child {
+      margin-left: 40px;
+    }
+  }
+}

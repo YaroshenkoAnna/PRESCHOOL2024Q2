@@ -107,7 +107,14 @@
       padding-bottom: 0;
       height: auto;
     }
+    &__link {
+      padding-bottom: 40px;
+    }
+  }
+}
 
+@include mixins.device(mixins.$sm) {
+  .footer {
     &__content:nth-child(2) {
       margin: 0 -10px 5px;
       align-items: flex-start;
@@ -117,12 +124,8 @@
       padding-bottom: 38px;
     }
 
-     &__content:nth-child(2) &__link {
+    &__content:nth-child(2) &__link {
       margin-left: -4px;
-    }
-
-    &__link {
-      padding-bottom: 40px;
     }
   }
 }
