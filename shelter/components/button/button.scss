@@ -30,7 +30,7 @@
     text-decoration: none;
   }
 
-  &_rund[disabled] {
+  &_disabled {
     color: variables.$color-dark-s;
     border-color: variables.$color-dark-s;
     pointer-events: none;
