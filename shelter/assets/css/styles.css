@@ -253,7 +253,7 @@
   border: 2px solid var(--color-primary);
   text-decoration: none;
 }
-.button_rund[disabled] {
+.button_disabled {
   color: var(--color-dark-s);
   border-color: var(--color-dark-s);
   pointer-events: none;
@@ -813,10 +813,10 @@
   .burger-menu:hover .burger-menu__label_dark::before, .burger-menu:hover .burger-menu__label_dark::after {
     background: var(--color-dark-l);
   }
-  .burger-menu__label::before {
+  .burger-menu__label_dark::before {
     box-shadow: 0 10px 0 var(--color-dark-3xl);
   }
-  .burger-menu:hover .burger-menu__label::before {
+  .burger-menu:hover .burger-menu__label_dark::before {
     box-shadow: 0 10px 0 var(--color-dark-l);
   }
 }

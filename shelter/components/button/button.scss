@@ -31,7 +31,7 @@
     text-decoration: none;
   }
 
-  &_rund[disabled] {
+  &_disabled {
     color: variables.$color-dark-s;
     border-color: variables.$color-dark-s;
     pointer-events: none;
@@ -41,6 +41,8 @@
     background-color: variables.$color-primary;
     pointer-events: none;
   }
+
+   
 
   &:hover {
     background: variables.$color-primary-light;

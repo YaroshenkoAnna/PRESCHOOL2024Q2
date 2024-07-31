@@ -61,11 +61,11 @@
     &:hover &__label_dark::after {
       background: variables.$color-dark-l;
     }
-    &__label::before {
+    &__label_dark::before {
       box-shadow: 0 10px 0 variables.$color-dark-3xl;
     }
 
-    &:hover &__label::before {
+    &:hover &__label_dark::before {
       box-shadow: 0 10px 0 variables.$color-dark-l;
     }
   }
