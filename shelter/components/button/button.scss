@@ -1,3 +1,4 @@
+@use "../../assets/css/mixins.scss";
 @use "../../assets/css/variables.scss";
 
 .button {
@@ -41,6 +42,8 @@
     pointer-events: none;
   }
 
+   
+
   &:hover {
     background: variables.$color-primary-light;
     border-color: variables.$color-primary-light;
@@ -56,7 +59,6 @@
     border: 2px solid variables.$color-primary;
     padding: 14px 43px;
   }
-
 }
 
 .pay-button {
@@ -93,6 +95,18 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 20px;
+}
 
- 
+@include mixins.device(mixins.$sm) {
+  .paginator {
+    column-gap: 10px;
+  }
+
+  .pay-button {
+    &__number {
+      font-size: 15px;
+      line-height: 110%; /* 16.5px */
+      letter-spacing: 0.9px;
+    }
+  }
 }

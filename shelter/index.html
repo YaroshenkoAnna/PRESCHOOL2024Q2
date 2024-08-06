@@ -25,6 +25,15 @@
               <p class="header__text">Shelter for pets in Boston</p>
             </a>
             <nav class="header__nav nav">
+              <div class="burger-menu">
+                <input
+                  type="checkbox"
+                  id="burger-checkbox"
+                  class="burger-menu__checkbox"
+                />
+                <label for="burger-checkbox" class="burger-menu__label"></label>
+              </div>
+
               <ul class="nav__items">
                 <li class="nav__item nav__item_active">
                   <a href="#" class="nav__link">About the shelter</a>
@@ -81,8 +90,12 @@
                 alt="about pets"
                 class="section__image"
               />
+
               <div class="section__content">
-                <h3 class="section__title">About the shelter “Cozy House”</h3>
+                <h3 class="section__title">
+                  About the shelter <br />
+                  “Cozy House”
+                </h3>
                 <p class="section__description">
                   Currently we have 121 dogs and 342 cats on our hands and
                   statistics show that only 20% of them will find a family. The
@@ -258,6 +271,7 @@
                 alt="Dog"
                 class="section__image"
               />
+
               <div class="section__content_s">
                 <h3 class="section__title">
                   You can also <br />
@@ -294,10 +308,7 @@
         <div class="container">
           <div class="footer__wraper">
             <div class="footer__content">
-              <h3 class="footer__title">
-                For questions <br />
-                and suggestions
-              </h3>
+              <h3 class="footer__title">For questions and suggestions</h3>
 
               <a href="mailto:email@shelter.com" class="footer__link">
                 <svg class="footer__icon" width="40px">
@@ -318,10 +329,7 @@
               >
             </div>
             <div class="footer__content">
-              <h3 class="footer__title">
-                We are waiting <br />
-                for your visit
-              </h3>
+              <h3 class="footer__title">We are waiting for your visit</h3>
 
               <a
                 href="https://www.google.de/maps/place/1+Centre+St,+Roxbury,+MA+02119,+USA/@42.330083,-71.1104545,15z/data=!3m1!4b1!4m6!3m5!1s0x89e37a260516d22d:0x67663c18c6a54ce9!8m2!3d42.3300686!4d-71.0920006!16s%2Fg%2F11td12jd0m?entry=ttu"
@@ -352,11 +360,14 @@
                 ></a
               >
             </div>
-            <img src="assets/images/footer-puppy.png" alt="Puppy" />
+            <img
+              src="assets/images/footer-puppy.png"
+              alt="Puppy"
+              class="footer__image"
+            />
           </div>
         </div>
       </footer>
     </div>
-    
   </body>
 </html>
