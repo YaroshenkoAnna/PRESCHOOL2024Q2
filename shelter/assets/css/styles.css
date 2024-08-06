@@ -20,8 +20,7 @@
   src: url("../fonts/georgia-regular.ttf");
 }
 .container {
-  max-width: 1280px;
-  padding: 0 40px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -383,7 +382,7 @@
   padding-bottom: 24px;
 }
 .section__item {
-  padding: 0 4.7vw;
+  padding: 0 5%;
   text-align: center;
   list-style: none;
   margin-top: 56px;
@@ -794,12 +793,6 @@
     background: var(--color-primary);
     transition: all 0.3s ease-in-out;
   }
-  .burger-menu:hover .burger-menu__label::before, .burger-menu:hover .burger-menu__label::after {
-    background: var(--color-light-xl);
-  }
-  .burger-menu:hover .burger-menu__label::before {
-    box-shadow: 0 10px 0 var(--color-light-xl);
-  }
   .burger-menu__label::before {
     top: 0;
     box-shadow: 0 10px 0 var(--color-primary);
@@ -810,14 +803,8 @@
   .burger-menu__label_dark::before, .burger-menu__label_dark::after {
     background: var(--color-dark-3xl);
   }
-  .burger-menu:hover .burger-menu__label_dark::before, .burger-menu:hover .burger-menu__label_dark::after {
-    background: var(--color-dark-l);
-  }
   .burger-menu__label_dark::before {
     box-shadow: 0 10px 0 var(--color-dark-3xl);
-  }
-  .burger-menu:hover .burger-menu__label_dark::before {
-    box-shadow: 0 10px 0 var(--color-dark-l);
   }
 }
 html {

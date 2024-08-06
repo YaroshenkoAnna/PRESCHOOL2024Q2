@@ -34,15 +34,6 @@
       transition: all 0.3s ease-in-out;
     }
 
-    &:hover &__label::before,
-    &:hover &__label::after {
-      background: variables.$color-light-xl;
-    }
-
-    &:hover &__label::before {
-      box-shadow: 0 10px 0 variables.$color-light-xl;
-    }
-
     &__label::before {
       top: 0;
       box-shadow: 0 10px 0 variables.$color-primary;
@@ -57,16 +48,8 @@
       background: variables.$color-dark-3xl;
     }
 
-    &:hover &__label_dark::before,
-    &:hover &__label_dark::after {
-      background: variables.$color-dark-l;
-    }
     &__label_dark::before {
       box-shadow: 0 10px 0 variables.$color-dark-3xl;
-    }
-
-    &:hover &__label_dark::before {
-      box-shadow: 0 10px 0 variables.$color-dark-l;
     }
   }
 }
