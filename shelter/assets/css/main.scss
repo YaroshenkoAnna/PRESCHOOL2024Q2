@@ -1,5 +1,6 @@
 @use "variables.scss";
-@use "../fonts/fonts.css";
+@use "mixins.scss";
+@use "../fonts/fonts.scss";
 @use "../../components/container/container.scss";
 @use "../../components/main/main.scss";
 @use "../../components/header/header.scss";
@@ -9,10 +10,9 @@
 @use "../../components/card/card.scss";
 @use "../../components/carousel/carousel.scss";
 @use "../../components/footer/footer.scss";
+@use "../../components/gallery/gallery.scss";
+@use "../../components/burger-menu/burger-menu.scss";
 
 html {
-  width: 100vw;
-  height: 100vh;
-
   scroll-behavior: smooth;
 }
