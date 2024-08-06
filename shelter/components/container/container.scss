@@ -2,9 +2,13 @@
 
 .container {
   max-width: 1200px;
-
-
   margin: 0 auto;
+}
+
+@include mixins.device(mixins.$xxl) {
+  .container {
+    padding: 0 35px;
+  }
 }
 
 @include mixins.device(mixins.$md) {
