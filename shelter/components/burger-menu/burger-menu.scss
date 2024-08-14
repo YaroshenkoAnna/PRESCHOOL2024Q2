@@ -3,6 +3,7 @@
 
 .burger-menu {
   position: relative;
+  z-index: 7;
 
   &__checkbox {
     position: absolute;
@@ -12,6 +13,13 @@
 
 @include mixins.device(mixins.$md2) {
   .burger-menu {
+    &__checkbox:checked + &__label {
+      
+     
+      transform: rotate(90deg);
+      transition: all 0.3s, transform 0.3s;
+    }
+
     &__label {
       cursor: pointer;
       display: block;
@@ -20,6 +28,7 @@
       background: transparent;
       width: 30px;
       height: 22px;
+      transition: all 0.3s, transform 0.3s;
     }
 
     &__label::before,
