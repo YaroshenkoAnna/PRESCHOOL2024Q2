@@ -98,7 +98,7 @@ const pets = [
   },
   {
     "name": "Katrine",
-    "img": "./assets/pets-katrine.png",
+    "img": "./assets/images/pets-katrine.png",
     "type": "Cat",
     "breed": "British Shorthair",
     "description": "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
@@ -146,20 +146,39 @@ const pets = [
 const arrowLeft = document.querySelector('.carousel__arrow_left').parentNode;
 const arrowRight = document.querySelector('.carousel__arrow_right').parentNode;
 const cards = document.querySelectorAll('.card');
-
-
-const template =`
-    <img src = ${pets[7]["img"]}>
-`; 
-
+const carousel = document.querySelector('.carousel__wraper');
+let currentArray=[];
+let previousArray=[];
+let previousArrow;
+changeCards();
 arrowLeft.addEventListener("click", changeCards);
 arrowRight.addEventListener("click", changeCards);
 
 function changeCards(event){
-getRandomInt(0, 8);
+    let arrNumbersCards = [];
 
- 
-
+    if (event) {
+        console.log("hi");
+        event.target == arrowLeft ? carousel.classList.add("transition-left") : carousel.classList.add("transition-right");
+    }
+    
+    if (event && previousArrow && !(event.target == previousArrow)) {
+       arrNumbersCards =  previousArray;
+    }else {
+        for (index = 0; index < 3; index++) {
+            function isUnique(){
+                let random = getRandomInt(0, 8); 
+                arrNumbersCards.includes(random) || currentArray.includes(random) ? isUnique() : arrNumbersCards.push(random);  
+            }    
+            isUnique(); 
+        }
+        
+    }
+    previousArrow = event ? event.target : "";
+    console.log(arrNumbersCards);
+    generateCards(arrNumbersCards);
+    previousArray = Array.from(currentArray);
+    currentArray = Array.from(arrNumbersCards);
 }
 
 function getRandomInt(min, max) {
@@ -168,11 +187,32 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);}
 
 function howManyActiveCards (){
-  let activeCards = Array.from(document.querySelectorAll('.card')).filter(s =>
+  let activeCards = Array.from(cards).filter(s =>
    window.getComputedStyle(s).getPropertyValue('display') != 'none');
-
   return activeCards.length;
 }
+
+function generateCards(arr){
+    let template = '';
+    arr.forEach((elem, index) => {
+        template += `<div class="section__card card">
+                    <img
+                      src=${pets[elem]["img"]}
+                      alt=pet ${pets[elem]["name"]}
+                      class="card__image"
+                    />
+                    <h4 class="card__title">${pets[elem]["name"]}</h4>
+                    <button class="card__button button button_secondary">
+                      Learn more
+                    </button>
+                  </div>`
+    })
+   carousel.innerHTML = template;
+     
+}
+
+
+  
 
 
 

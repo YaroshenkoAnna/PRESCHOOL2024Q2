@@ -24,3 +24,30 @@ html {
   height: 100vh;
   z-index: 1;
 }
+
+.transition-left {
+  animation-name: slide-left;
+  animation-duration: 2s;
+}
+
+.transition-right {
+  animation-name: slide-right;
+  animation-duration: 2s;
+}
+
+@keyframes slide-right {
+  from {
+    left: -990px;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes slide-left {
+  from {
+    left: -990px;
+  }
+  to {
+    left: -1980px;
+  }
+}
