@@ -147,72 +147,72 @@ const arrowLeft = document.querySelector('.carousel__arrow_left').parentNode;
 const arrowRight = document.querySelector('.carousel__arrow_right').parentNode;
 const cards = document.querySelectorAll('.card');
 const carousel = document.querySelector('.carousel__wraper');
-let currentArray=[];
 let previousArray=[];
-let previousArrow;
-changeCards();
+let currentArray=[];
+let previousArrow =null;
+let arrNumbersCards = generateUniqueNumbers();
+generateCards(arrNumbersCards);
+
+carousel.addEventListener("animationend", handleAnimationEnd);
 arrowLeft.addEventListener("click", changeCards);
 arrowRight.addEventListener("click", changeCards);
 
-function changeCards(event){
-    let arrNumbersCards = [];
 
-    if (event) {
-        console.log("hi");
-        event.target == arrowLeft ? carousel.classList.add("transition-left") : carousel.classList.add("transition-right");
-    }
-    
-    if (event && previousArrow && !(event.target == previousArrow)) {
-       arrNumbersCards =  previousArray;
-    }else {
-        for (index = 0; index < 3; index++) {
-            function isUnique(){
-                let random = getRandomInt(0, 8); 
-                arrNumbersCards.includes(random) || currentArray.includes(random) ? isUnique() : arrNumbersCards.push(random);  
-            }    
-            isUnique(); 
-        }
-        
-    }
-    previousArrow = event ? event.target : "";
-    console.log(arrNumbersCards);
-    generateCards(arrNumbersCards);
-    previousArray = Array.from(currentArray);
-    currentArray = Array.from(arrNumbersCards);
-}
-
-function getRandomInt(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);}
-
-function howManyActiveCards (){
-  let activeCards = Array.from(cards).filter(s =>
-   window.getComputedStyle(s).getPropertyValue('display') != 'none');
-  return activeCards.length;
-}
-
-function generateCards(arr){
-    let template = '';
-    arr.forEach((elem, index) => {
-        template += `<div class="section__card card">
-                    <img
-                      src=${pets[elem]["img"]}
-                      alt=pet ${pets[elem]["name"]}
-                      class="card__image"
-                    />
-                    <h4 class="card__title">${pets[elem]["name"]}</h4>
-                    <button class="card__button button button_secondary">
-                      Learn more
-                    </button>
-                  </div>`
-    })
-   carousel.innerHTML = template;
-     
-}
-
-
+function changeCards(event) {
+  
+  startAnimation(event.currentTarget === arrowLeft ? "transition-left" : "transition-right");
   
 
+  arrNumbersCards = (previousArrow !== event.currentTarget && previousArrow ) ? previousArray : generateUniqueNumbers();
+  console.log(arrNumbersCards);
+  previousArrow = event.currentTarget;
+  previousArray = [...currentArray];
+  currentArray = [...arrNumbersCards];
+ 
+}
 
+function handleAnimationEnd() {
+    stopAnimation();
+    console.log(arrNumbersCards);
+  generateCards(arrNumbersCards)
+}
 
+function startAnimation(direction) {
+  carousel.classList.add(direction);
+}
+
+function stopAnimation() {
+  carousel.classList.remove("transition-left", "transition-right");
+}
+
+function generateUniqueNumbers() {
+  const numCards = 3;
+  const uniqueNumbers = new Set(currentArray);
+  
+  while (uniqueNumbers.size < numCards+currentArray.length) {
+     
+    let random = getRandomInt(0, pets.length)
+    uniqueNumbers.add(random);
+  }
+    for( let index = 0; index<currentArray.length; index++){
+    uniqueNumbers.delete(currentArray[index])
+}
+    return Array.from(uniqueNumbers);
+ 
+}   
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function generateCards(arr) {
+  const template = arr.map(index => `
+    <div class="section__card card">
+      <img src="${pets[index].img}" alt="${pets[index].name}" class="card__image" />
+      <h4 class="card__title">${pets[index].name}</h4>
+      <button class="card__button button button_secondary">Learn more</button>
+    </div>
+  `).join('');
+  
+  carousel.innerHTML = template;
+}

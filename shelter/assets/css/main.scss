@@ -27,12 +27,12 @@ html {
 
 .transition-left {
   animation-name: slide-left;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 .transition-right {
   animation-name: slide-right;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 @keyframes slide-right {
@@ -45,9 +45,9 @@ html {
 }
 @keyframes slide-left {
   from {
-    left: -990px;
+    right: -990px;
   }
   to {
-    left: -1980px;
+    right: 0;
   }
 }
