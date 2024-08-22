@@ -595,6 +595,12 @@
   margin-bottom: 30px;
 }
 
+.cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
 .carousel {
   display: flex;
   flex-direction: row;
@@ -605,10 +611,13 @@
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  flex-wrap: wrap;
   transition: transform 0.5s ease-in-out;
-  overflow: hidden;
   position: relative;
+}
+.carousel__container {
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
 }
 .carousel__wraper_grid {
   display: grid;
@@ -857,28 +866,37 @@ html {
 .transition-left {
   animation-name: slide-left;
   animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .transition-right {
   animation-name: slide-right;
   animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes slide-right {
   from {
-    left: -990px;
+    right: 0;
   }
   to {
-    left: 0;
+    right: -100%;
   }
 }
 @keyframes slide-left {
   from {
-    right: -990px;
+    left: 0;
   }
   to {
-    right: 0;
+    left: -100%;
   }
+}
+.hide-right {
+  margin-right: -100%;
+}
+
+.hide-left {
+  margin-left: -100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

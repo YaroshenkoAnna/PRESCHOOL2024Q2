@@ -11,12 +11,15 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    flex-wrap: wrap;
     transition: transform 0.5s ease-in-out;
-    overflow: hidden;
-    position: relative;
-
     
+    position: relative;
+  }
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
   }
 
   &__wraper_grid {

@@ -28,26 +28,37 @@ html {
 .transition-left {
   animation-name: slide-left;
   animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .transition-right {
   animation-name: slide-right;
   animation-duration: 1s;
+  animation-fill-mode: forwards;
+  
 }
 
 @keyframes slide-right {
   from {
-    left: -990px;
+    right: 0;
   }
   to {
-    left: 0;
+    right: -100%;
   }
 }
 @keyframes slide-left {
   from {
-    right: -990px;
+    left: 0;
   }
   to {
-    right: 0;
+    left: -100%;
   }
+}
+
+.hide-right {
+  margin-right: -100%;
+}
+
+.hide-left {
+  margin-left: -100%;
 }
