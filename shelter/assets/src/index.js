@@ -142,7 +142,7 @@ const pets = [
   }
 ]
 
-
+let animating = false;
 const arrowLeft = document.querySelector('.carousel__arrow_left').parentNode;
 const arrowRight = document.querySelector('.carousel__arrow_right').parentNode;
 const cards = document.querySelectorAll('.card');
@@ -151,7 +151,8 @@ let previousArray=[];
 let currentArray=[];
 let previousArrow =null;
 let arrNumbersCards = generateUniqueNumbers();
-generateCards(arrNumbersCards);
+currentArray = [...arrNumbersCards];
+generateCards(arrNumbersCards, previousArrow);
 
 carousel.addEventListener("animationend", handleAnimationEnd);
 arrowLeft.addEventListener("click", changeCards);
@@ -159,31 +160,36 @@ arrowRight.addEventListener("click", changeCards);
 
 
 function changeCards(event) {
-  
-  startAnimation(event.currentTarget === arrowLeft ? "transition-left" : "transition-right");
-  
-
+    if (animating) return;
+    animating = true;
+  document.querySelector(".cards").classList.add("current");
   arrNumbersCards = (previousArrow !== event.currentTarget && previousArrow ) ? previousArray : generateUniqueNumbers();
-  console.log(arrNumbersCards);
+  
   previousArrow = event.currentTarget;
   previousArray = [...currentArray];
   currentArray = [...arrNumbersCards];
- 
+  generateCards(arrNumbersCards, previousArrow );
+  
+   startAnimation(event.currentTarget === arrowLeft ? "transition-left" : "transition-right"); 
+  
 }
 
 function handleAnimationEnd() {
-    stopAnimation();
-    console.log(arrNumbersCards);
-  generateCards(arrNumbersCards)
+   
+   stopAnimation();
 }
 
-function startAnimation(direction) {
+ function startAnimation(direction) {
+ 
   carousel.classList.add(direction);
 }
 
 function stopAnimation() {
+  document.querySelector(".current").remove();
+  document.querySelector(".cards").classList.remove("hide-left", "hide-right");
   carousel.classList.remove("transition-left", "transition-right");
-}
+  animating = false;
+} 
 
 function generateUniqueNumbers() {
   const numCards = 3;
@@ -205,14 +211,39 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateCards(arr) {
-  const template = arr.map(index => `
-    <div class="section__card card">
-      <img src="${pets[index].img}" alt="${pets[index].name}" class="card__image" />
-      <h4 class="card__title">${pets[index].name}</h4>
-      <button class="card__button button button_secondary">Learn more</button>
-    </div>
-  `).join('');
+function generateCards(arr, arrow) {
+
+    const cards = document.createElement("div");
+    cards.classList.add("cards");
+
+    arr.forEach(index => {
+        const img = document.createElement("img");
+        img.classList.add("card__image");
+        img.alt = pets[index].name;
+        img.src = pets[index].img;
+
+        const headerElement = document.createElement("h4");
+        headerElement.textContent =pets[index].name; 
+        headerElement.classList.add("card__title");
+
+        const button = document.createElement("button");
+        button.textContent = "Learn more";
+        button.classList.add("card__button", "button",  "button_secondary");
+
+        const div = document.createElement("div");
+        div.classList.add("section__card", "card");
+
+        div.append(img, headerElement, button);
+        cards.append(div);
+    
+  });
+  if (arrow == arrowRight) {
+      cards.classList.add("hide-left")
+      carousel.prepend(cards);
+  } else {
+      if(arrow) {cards.classList.add("hide-right");}
+
+      carousel.append(cards);
+  }
   
-  carousel.innerHTML = template;
 }
