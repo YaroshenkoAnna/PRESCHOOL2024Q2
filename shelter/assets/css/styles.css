@@ -768,11 +768,14 @@
     justify-content: space-between;
   }
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 731px) {
   .carousel {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+  }
+  .carousel__wraper {
+    width: 100%;
   }
   .carousel__wraper {
     justify-content: center;
@@ -780,8 +783,6 @@
   .carousel__button {
     order: 10;
   }
-}
-@media only screen and (max-width: 731px) {
   .carousel__button:first-child {
     margin-right: 40px;
   }

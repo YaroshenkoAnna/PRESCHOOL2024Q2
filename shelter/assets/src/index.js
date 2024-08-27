@@ -1,10 +1,24 @@
 
 
 /* BURGER-MENU */
+burger();
 
-const nav = document.querySelector(".nav__items");
+
+function burger(){const nav = document.querySelector(".nav__items");
 const menu = document.querySelector('.burger-menu__checkbox');
 const schadedArea = document.querySelector('span');
+
+function changeDefault(){
+    menu.checked = false;
+ if (document.querySelector(".header__text_dark")) {
+       document.querySelector(".nav").classList.remove("nav_dark");
+        document.querySelector(".burger-menu__label").classList.remove("burger-menu__label_dark");  
+   } 
+   nav.classList.remove("nav__items_open");
+}
+
+window.addEventListener("beforeunload", changeDefault);
+
 
 menu.addEventListener("click", openHideMenu);  
 
@@ -33,14 +47,19 @@ function openHideMenu(){
         }
     });
 
-    nav.addEventListener("click", isNavLink, {once: true})
-         window.addEventListener('resize', function(){
+    nav.addEventListener("click", isNavLink, {once: true});
+        
+    window.addEventListener('resize', function(){
              if (window.innerWidth > 767 && menu.checked === true) {
                  menu.checked = false;
                  openHideMenu();
              }
          })
-};
+
+    
+};}
+
+
 
 
 
@@ -333,7 +352,7 @@ function toggleDisabledButtons(){
 }
 
 function defineMaxPage(){
-    if (window.innerWidth >= 960) {
+    if (window.innerWidth >= 1270) {
         maxPage = 6;
     } else if (window.innerWidth<640) {
         maxPage = 16;
