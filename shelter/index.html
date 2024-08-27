@@ -16,6 +16,44 @@
     <title>Cozy House</title>
   </head>
   <body>
+    <div class="modal">
+      <div class="modal__wraper">
+        <div class="button button_rund modal__button">&times;</div>
+        <img
+          src="assets/images/pets-freddie.png"
+          alt="Freddie"
+          class="modal__image"
+        />
+        <div class="modal__content">
+          <h3 class="modal__title">Freddie</h3>
+          <h4 class="modal__subtitle">Cat - British Shorthair</h4>
+          <p class="modal__description">
+            Freddie is a little shy at first, but very sweet when he warms up.
+            He likes playing with shoe strings and bottle caps. He is quick to
+            learn the rhythms of his human’s daily life. Freddie has bounced
+            around a lot in his life, and is looking to find his forever home.
+          </p>
+          <ul class="modal__list">
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Age: </b>
+              <span id="age">2 months</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Inoculations: </b>
+              <span id="inoculations">rabies</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Diseases: </b>
+              <span id="diseases">none</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Parasites: </b>
+              <span id="parasites"> none </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="page">
       <header class="header">
         <div class="container">
@@ -129,7 +167,7 @@
                   />
                 </div>
                 <div class="carousel__container">
-                  <div class="carousel__wraper"></div>
+                  <div class="carousel__wraper" id="carousel"></div>
                 </div>
                 <div class="button button_rund carousel__button">
                   <img
