@@ -643,6 +643,7 @@
 .modal__image {
   width: 500px;
   height: 500px;
+  align-self: center;
 }
 .modal__title {
   font-size: 35px;

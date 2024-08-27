@@ -6,7 +6,7 @@ burger();
 
 function burger(){const nav = document.querySelector(".nav__items");
 const menu = document.querySelector('.burger-menu__checkbox');
-const schadedArea = document.querySelector('span');
+const schadedArea = document.querySelector('#shadow');
 
 function changeDefault(){
     menu.checked = false;
@@ -41,6 +41,7 @@ function openHideMenu(){
 
     schadedArea.classList.toggle("blackout");
     schadedArea.addEventListener("click", function(event){
+        console.log(event.target);
         if (event.target ==schadedArea) {
         menu.checked = false;
         openHideMenu();
@@ -352,6 +353,7 @@ function toggleDisabledButtons(){
 }
 
 function defineMaxPage(){
+   
     if (window.innerWidth >= 1270) {
         maxPage = 6;
     } else if (window.innerWidth<640) {
@@ -385,6 +387,7 @@ function generateUniqueArray(){
     }
 
     function isUnique(arr){
+
 
         if (numberElements === 1) {
          let array6Numbers = new Set (uniqueArray.slice(6).concat(arr.slice(0,4)));
@@ -431,7 +434,7 @@ function generateUniqueArray(){
 function generateCards(){
     let numberCardsOnThePage = 48 / maxPage;
     let arr = array48.slice((currentPage-1) * numberCardsOnThePage, numberCardsOnThePage * currentPage)
-
+    
     const cards = document.createElement("div");
     cards.classList.add("gallery__wraper");
 
@@ -458,7 +461,7 @@ function generateCards(){
         cards.append(div);
     
   });
-  gallery.replaceWith(cards);
+  document.querySelector(".gallery__wraper").replaceWith(cards);
 }
 
 document.querySelector(".gallery__wraper").addEventListener("click", openModal);
