@@ -25,7 +25,7 @@ menu.addEventListener("click", openHideMenu);
  function isNavLink(event){
     let target = event.target;
 
-    if (target.tagName == 'A' || target.tagName == 'LI' ) {
+    if (target.closest(".nav__item")) {
         menu.checked = false;
         openHideMenu();
     }
