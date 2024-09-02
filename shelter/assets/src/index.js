@@ -462,9 +462,10 @@ function generateCards(){
     
   });
   document.querySelector(".gallery__wraper").replaceWith(cards);
+  document.querySelector(".gallery__wraper").addEventListener("click", openModal);
 }
 
-document.querySelector(".gallery__wraper").addEventListener("click", openModal);
+
 
 }
 
