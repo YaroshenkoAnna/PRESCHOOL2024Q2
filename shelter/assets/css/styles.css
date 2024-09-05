@@ -929,7 +929,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .burger-menu__checkbox:checked + .burger-menu__label {
+  .burger-menu__label_active {
     transform: rotate(90deg);
     transition: all 0.3s, transform 0.3s;
   }

@@ -13,9 +13,7 @@
 
 @include mixins.device(mixins.$md2) {
   .burger-menu {
-    &__checkbox:checked + &__label {
-      
-     
+    &__label_active {
       transform: rotate(90deg);
       transition: all 0.3s, transform 0.3s;
     }

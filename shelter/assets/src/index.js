@@ -5,20 +5,8 @@ burger();
 
 
 function burger(){const nav = document.querySelector(".nav__items");
-const menu = document.querySelector('.burger-menu__checkbox');
+const menu = document.querySelector('.burger-menu__label');
 const schadedArea = document.querySelector('#shadow');
-
-function changeDefault(){
-    menu.checked = false;
- if (document.querySelector(".header__text_dark")) {
-       document.querySelector(".nav").classList.remove("nav_dark");
-        document.querySelector(".burger-menu__label").classList.remove("burger-menu__label_dark");  
-   } 
-   nav.classList.remove("nav__items_open");
-}
-
-window.addEventListener("beforeunload", changeDefault);
-
 
 menu.addEventListener("click", openHideMenu);  
 
@@ -32,7 +20,8 @@ menu.addEventListener("click", openHideMenu);
 };
 
 function openHideMenu(){
-   document.body.style.overflow = menu.checked === true ? 'hidden' : '';
+  menu.classList.toggle("burger-menu__label_active");
+   document.body.style.overflow = menu.classList.contains("burger-menu__label_active") === true ? 'hidden' : '';
    if (document.querySelector(".header__text_dark")) {
        document.querySelector(".nav").classList.toggle("nav_dark");
         document.querySelector(".burger-menu__label").classList.toggle("burger-menu__label_dark");  
@@ -42,8 +31,7 @@ function openHideMenu(){
     schadedArea.classList.toggle("blackout");
     schadedArea.addEventListener("click", function(event){
         console.log(event.target);
-        if (event.target ==schadedArea) {
-        menu.checked = false;
+        if (event.target == schadedArea) {
         openHideMenu();
         }
     });
@@ -51,8 +39,7 @@ function openHideMenu(){
     nav.addEventListener("click", isNavLink, {once: true});
         
     window.addEventListener('resize', function(){
-             if (window.innerWidth > 767 && menu.checked === true) {
-                 menu.checked = false;
+             if (window.innerWidth > 767 && menu.classList.contains("burger-menu__label_active")  === true) {
                  openHideMenu();
              }
          })
