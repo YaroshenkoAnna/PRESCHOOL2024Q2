@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio-player</title>
+    <link rel="stylesheet" href="assets/css/normalize.css " />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="icon" href="assets/images/headphone.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="page">
+      <section class="main">
+        <div class="container">
+          <div class="audio-player">
+            <img
+              src="assets/images/cover1.jpg"
+              alt="cover"
+              class="audio-player__image"
+            />
+            <h2 class="audio-player__singer">Гражданин Топинамбур</h2>
+            <h2 class="audio-player__song">Войти в Айти</h2>
+            <div class="audio-player__progress-bar progress-bar">
+              <span class="progress-bar__current-time">0 : 00</span>
+              <div class="progress-bar__container">
+                <input
+                  type="range"
+                  name="progress"
+                  id="progress"
+                  class="progress-bar__label"
+                  min="0"
+                  max="100"
+                  value="0"
+                />
+              </div>
+              <span class="progress-bar__duration"></span>
+            </div>
+            <div class="audio-player__controls">
+              <div class="audio-player__previous-button">
+                <svg class="audio-player__previous-icon">
+                  <use xlink:href="assets/images/sprite.svg#previous"></use>
+                </svg>
+              </div>
+              <div class="audio-player__play-button">
+                <svg class="audio-player__play-icon">
+                  <use xlink:href="assets/images/sprite.svg#play"></use>
+                </svg>
+              </div>
+              <div class="audio-player__pause-button hide">
+                <svg class="audio-player__pause-icon">
+                  <use xlink:href="assets/images/sprite.svg#pause"></use>
+                </svg>
+              </div>
+              <div class="audio-player__next-button">
+                <svg class="audio-player__next-icon">
+                  <use xlink:href="assets/images/sprite.svg#next"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__logo"></div>
+        </div>
+      </footer>
+    </div>
+    <script src="assets/src/script.js"></script>
+  </body>
+</html>
