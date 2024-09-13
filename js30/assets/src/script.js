@@ -34,7 +34,7 @@ const songs = [
     title: "Das Kleine Küken Piept",
     artist: "Pulcino Pio",
     src: "assets/audios/audio3.mp3",
-    cover: "./assets/images/cover3.jpeg"
+    cover: "./assets/images/cover3.jpg"
   },
   {
     title: "Lovesick",
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.addEventListener('touchstart', startDragging);
     progressBar.addEventListener('mouseup', endDragging);
     progressBar.addEventListener('touchend', endDragging);
-    
+
     function startDragging(){isDragging = true;}
     
     function endDragging(){
