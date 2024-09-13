@@ -1,3 +1,16 @@
+console.log(`
+60/70
+✓ Вёрстка +10
+вёрстка аудиоплеера: есть кнопка Play/Pause, кнопки "Вперёд" и "Назад" для пролистывания аудиотреков, прогресс-бар, отображается название и автор трека +5
+в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5
+✓ Кнопка Play/Pause +10
+есть кнопка Play/Pause, при клике по которой можно запустить или остановить проигрывание аудиотрека +5
+внешний вид и функционал кнопки Play/Pause изменяется в зависимости от того, проигрывается ли в данный момент аудиотрек +5
+✓ При кликах по кнопкам "Вперёд" и "Назад" переключается проигрываемый аудиотрек. Аудиотреки пролистываются по кругу - после последнего идёт первый +10
+✓ При смене аудиотрека меняется изображение - обложка аудиотрека +10
+✓ Прогресс-бар отображает прогресс проигрывания текущего аудиотрека. При перемещении ползунка вручную меняется текущее время проигрывания аудиотрека +10
+✓ Отображается продолжительность аудиотрека и его текущее время проигрывания +10`);
+
 const songs = [
   {
     title: "Fondu au noir",
@@ -121,16 +134,22 @@ document.addEventListener('DOMContentLoaded', () => {
     song.textContent = songs[currentSong].title;
     recieveDuration();
     progressBar.value = 0;
-      progressBar.addEventListener('mousedown', () => {
-    isDragging = true;
-  });
-  progressBar.addEventListener('mouseup', () => {
-    if (isDragging) {
-      const newTime = (progressBar.value / 100) * audio.duration;
-      audio.currentTime = newTime;
-      isDragging = false;
+
+    progressBar.addEventListener('mousedown', startDragging);
+    progressBar.addEventListener('touchstart', startDragging);
+    progressBar.addEventListener('mouseup', endDragging);
+    progressBar.addEventListener('touchend', endDragging);
+    
+    function startDragging(){isDragging = true;}
+    
+    function endDragging(){
+      if (isDragging) {
+        const newTime = (progressBar.value / 100) * audio.duration;
+        audio.currentTime = newTime;
+        isDragging = false;
+      }
     }
-  });
+  
     progressBarColor.addEventListener("click", (event) =>{
       const clickPosition = event.offsetX;
       const containerWidth = progressBar.offsetWidth;

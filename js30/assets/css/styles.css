@@ -58,14 +58,24 @@
   border-radius: 50%;
   padding: 7px;
   border: 1px solid white;
+  transition: background-color 0.2s;
 }
-.audio-player__play-button:hover, .audio-player__pause-button:hover, .audio-player__next-button:hover, .audio-player__previous-button:hover {
+.audio-player__button {
+  border-radius: 50%;
+}
+.audio-player__play-button:active, .audio-player__pause-button:active, .audio-player__button:active, .audio-player__next-button:active, .audio-player__previous-button:active {
   background: rgba(0, 0, 0, 0.3);
+}
+@media not all and (pointer: coarse) {
+  .audio-player__play-button:hover, .audio-player__pause-button:hover, .audio-player__next-button:hover, .audio-player__previous-button:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 .audio-player__next-button, .audio-player__previous-button {
   padding: 2px;
   display: flex;
   border-radius: 50%;
+  transition: background-color 0.2s;
 }
 .audio-player__play-icon, .audio-player__pause-icon, .audio-player__next-icon, .audio-player__previous-icon {
   width: 30px;
@@ -163,10 +173,10 @@ input[type=range]:hover::-webkit-slider-thumb {
 
 .progress-bar__progress {
   position: absolute;
-  top: 50%;
+  top: 7.5px;
   left: 0;
   z-index: 1;
-  transform: translateY(-50%);
+  transform: translateY(-3px);
   height: 6px;
   border-left: 1px solid #f0f0f0;
   background: linear-gradient(to top, #2322b3, #3f51b5, #2196f3, #2538a5, #2538a5, #2196f3, #3f51b5, #2322b3);
@@ -189,6 +199,7 @@ body {
   display: flex;
   flex-direction: column;
   min-width: max-content;
+  min-height: 100vh;
 }
 
 .main {
