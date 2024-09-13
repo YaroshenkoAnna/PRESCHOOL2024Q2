@@ -24,6 +24,7 @@
             <div class="audio-player__progress-bar progress-bar">
               <span class="progress-bar__current-time">0 : 00</span>
               <div class="progress-bar__container">
+                <div class="progress-bar__progress"></div>
                 <input
                   type="range"
                   name="progress"
@@ -32,6 +33,7 @@
                   min="0"
                   max="100"
                   value="0"
+                  step="0.05"
                 />
               </div>
               <span class="progress-bar__duration"></span>
@@ -63,7 +65,21 @@
       </section>
       <footer class="footer">
         <div class="container">
-          <div class="footer__logo"></div>
+          <div class="footer__wraper">
+            <a href="https://rs.school/courses/javascript-ru" target="_blank"
+              ><img
+                src="assets/images/rs_school_js.svg"
+                alt="icon rs_school"
+                class="footer__logo"
+            /></a>
+
+            <span class="footer__description"
+              >© 2024 All rights reserved by
+              <a class="footer__link" href="https://github.com/YaroshenkoAnna"
+                >Anna Yaroshenko</a
+              ></span
+            >
+          </div>
         </div>
       </footer>
     </div>

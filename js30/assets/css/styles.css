@@ -8,7 +8,28 @@
   src: url("../fonts/InriaSans-Regular.ttf");
 }
 .footer {
-  height: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 900;
+  color: black;
+  min-height: 75px;
+}
+.footer__logo {
+  width: 80px;
+}
+.footer__wraper {
+  margin: auto;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__link {
+  text-decoration: none;
+  color: #999aaa;
 }
 
 .audio-player {
@@ -92,25 +113,29 @@
   font-size: 13px;
 }
 .progress-bar__container {
-  width: 220px;
+  position: relative;
+  width: 100%;
   /* background-color: #ddd;
   height: 10px;
   position: relative;
   text-align: start;
   white-space: nowrap; */
 }
+.progress-bar__duration, .progress-bar__current-time {
+  white-space: nowrap;
+}
 .progress-bar__label {
   -webkit-appearance: none;
   width: 100%;
-  height: 5px;
-  background: green;
+  /*  height: 5px;
+  background: rgb(128, 0, 0); 
   border-radius: 5px;
-  outline: aqua;
+  outline: aqua;*/
 }
 
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 10px;
+  height: 8px;
   background: #ddd;
   border-radius: 5px;
 }
@@ -118,38 +143,53 @@ input[type=range]::-webkit-slider-runnable-track {
 /* Стили для ползунка */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Убирает стандартный вид */
-  width: 20px; /* Ширина ползунка */
+  width: 8px; /* Ширина ползунка */
   height: 20px; /* Высота ползунка */
-  background: #4caf50; /* Цвет ползунка */
-  border-radius: 50%; /* Делаем ползунок круглым */
+  background: #081657; /* Цвет ползунка */
+  border: 1px solid rgba(253, 252, 228, 0.877);
+  border-radius: 40%; /* Делаем ползунок круглым */
   cursor: pointer; /* Курсор при наведении */
   transition: background 0.3s ease; /* Анимация при наведении */
-  margin-top: -5px; /* Выравнивание ползунка по центру трека */
-}
-
-/* Стили при наведении на ползунок */
-input[type=range]::-webkit-slider-thumb:hover {
-  background: #45a049; /* Изменение цвета при наведении */
+  margin-top: -7.5px; /* Выравнивание ползунка по центру трека */
+  position: relative;
+  z-index: 3;
 }
 
 /* Стили для фокуса */
-input[type=range]:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Тень при фокусе */
+input[type=range]:hover::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(40, 132, 218, 0.5); /* Тень при фокусе */
+}
+
+.progress-bar__progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  height: 6px;
+  border-left: 1px solid #f0f0f0;
+  background: linear-gradient(to top, #2322b3, #3f51b5, #2196f3, #2538a5, #2538a5, #2196f3, #3f51b5, #2322b3);
+  border-radius: 5px;
+  width: 0%; /* Начальное значение */
+  transition: width 0.1s ease;
 }
 
 .container {
   max-width: 1200px;
+  margin: auto;
 }
 
 .page {
-  background: rgb(55, 51, 129);
   background: radial-gradient(circle, rgb(55, 51, 129) 0%, rgba(38, 38, 175, 0.9570421919) 50%, rgb(24, 173, 203) 100%);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
 }
 
 .main {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding-bottom: 8%;
 }
 
 /*# sourceMappingURL=styles.css.map */

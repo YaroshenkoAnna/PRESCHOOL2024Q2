@@ -62,33 +62,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const duration = document.querySelector(".progress-bar__duration");
   const currentTime = document.querySelector(".progress-bar__current-time");
   const progressBar = document.querySelector(".progress-bar__label");
+  const progressBarColor =document.querySelector(".progress-bar__progress");
   let isDragging = false;
   let currentSong = 1;
   
-  let audio = new Audio("assets/audios/audio1.mp3"); 
- 
-  recieveDuration();
+  let audio;
+  changeDataSong();
   play.addEventListener("click", playAudio);
   pause.addEventListener("click", pauseAudio);
   play.addEventListener("click", hide);
   pause.addEventListener("click", hide);
   next.addEventListener("click", playNextAudio);
   previous.addEventListener("click", playPreviousAudio);
-  progressBar.addEventListener('mousedown', () => {
-    isDragging = true;
-  });
-  progressBar.addEventListener('mouseup', () => {
-    if (isDragging) {
-      const newTime = (progressBar.value / 100) * audio.duration;
-      audio.currentTime = newTime;
-      isDragging = false;
-  }
-});
+
+
  
   
   function playAudio(){
     audio.play();
-    audio.addEventListener('timeupdate', changeCurrentTime);
+    
     audio.addEventListener('ended', playNextAudio);
   }
 
@@ -112,17 +104,38 @@ document.addEventListener('DOMContentLoaded', () => {
  }
    
  function changeDataSong(){
-    audio.pause();
+   if (audio) {
+     audio.pause();
+   }
+    
     audio = new Audio(songs[currentSong].src); 
     currentTime.textContent = "0 : 00";
+     
+      audio.addEventListener('timeupdate', changeCurrentTime);
+      document.querySelector(".progress-bar__progress").style.setProperty('width', 0);
     if (getComputedStyle(play).display == 'none') {
        playAudio(); 
     }
     image.src = songs[currentSong].cover;
     singer.textContent = songs[currentSong].artist;
     song.textContent = songs[currentSong].title;
-    recieveDuration();
-    
+    recieveDuration();progressBar.value = 0;
+      progressBar.addEventListener('mousedown', () => {
+    isDragging = true;
+  });
+  progressBar.addEventListener('mouseup', () => {
+    if (isDragging) {
+      const newTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = newTime;
+      isDragging = false;
+    }
+  });
+    progressBarColor.addEventListener("click", (event) =>{
+      const clickPosition = event.offsetX;
+      const containerWidth = progressBar.offsetWidth;
+      const newTime = (clickPosition/containerWidth) * audio.duration;
+      audio.currentTime = newTime;
+    });
  }
 
  function recieveDuration(){
@@ -144,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
      
     const progress = (audio.currentTime / audio.duration) * 100;
     progressBar.value = progress;
+    document.querySelector(".progress-bar__progress").style.setProperty('width', `${progress}%`);
   }
  }
 
