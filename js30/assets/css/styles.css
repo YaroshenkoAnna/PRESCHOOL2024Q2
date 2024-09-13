@@ -14,6 +14,7 @@
   font-weight: 900;
   color: black;
   min-height: 75px;
+  margin-top: auto;
 }
 .footer__logo {
   width: 80px;
@@ -179,11 +180,15 @@ input[type=range]:hover::-webkit-slider-thumb {
   margin: auto;
 }
 
+body {
+  height: 100%;
+}
+
 .page {
   background: radial-gradient(circle, rgb(55, 51, 129) 0%, rgba(38, 38, 175, 0.9570421919) 50%, rgb(24, 173, 203) 100%);
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
 }
 
 .main {

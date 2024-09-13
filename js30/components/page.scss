@@ -1,3 +1,7 @@
+body{
+  height: 100%;
+}
+
 .page {
   background: radial-gradient(
     circle,
@@ -5,7 +9,7 @@
     rgba(38, 38, 175, 0.9570421918767507) 50%,
     rgba(24, 173, 203, 1) 100%
   );
-  display: grid;
-  grid-template-rows: 1fr auto;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
 }

@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     image.src = songs[currentSong].cover;
     singer.textContent = songs[currentSong].artist;
     song.textContent = songs[currentSong].title;
-    recieveDuration();progressBar.value = 0;
+    recieveDuration();
+    progressBar.value = 0;
       progressBar.addEventListener('mousedown', () => {
     isDragging = true;
   });
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentTime.textContent = formatTime(audio.currentTime);
    if (!isDragging) {
      
-    const progress = (audio.currentTime / audio.duration) * 100;
+    const progress = (audio.currentTime / audio.duration) * 100 || 0;
     progressBar.value = progress;
     document.querySelector(".progress-bar__progress").style.setProperty('width', `${progress}%`);
   }
