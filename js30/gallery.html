@@ -4,16 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Audio-player</title>
+    <title>Gallery</title>
     <link rel="stylesheet" href="assets/css/normalize.css " />
     <link rel="stylesheet" href="assets/css/gallery.css" />
-    <link rel="icon" href="assets/images/headphone.png" type="image/x-icon" />
+    <link rel="icon" href="assets/images/galerie.png" type="image/x-icon" />
   </head>
   <body>
     <div class="page">
+      <header class="header">
+        <div class="container">
+          <div class="header__wraper">
+            <h1 class="header__title">Gallery</h1>
+            <div class="search">
+              <label class="search__label" for="site-search"></label>
+              <input
+                class="search__field"
+                type="search"
+                id="site-search"
+                name="q"
+                placeholder="Search..."
+              />
+              <button class="search__button">
+                <svg class="search__icon">
+                  <use href="assets/images/sprite.svg#search"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
       <section class="main">
         <div class="container">
-        
+          <div class="gallery"></div>
         </div>
       </section>
       <footer class="footer">

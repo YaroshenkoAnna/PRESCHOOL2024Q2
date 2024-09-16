@@ -1,0 +1,24 @@
+.search {
+  position: relative;
+
+  &__field {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 34px;
+    width: 230px;
+    padding-left: 10px;
+  }
+
+  &__button {
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    padding: 0 5px;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
