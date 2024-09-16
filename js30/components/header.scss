@@ -1,9 +1,13 @@
+@use "../assets/css/mixins.scss";
+
 .header {
   &__wraper {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 10px;
   }
 }
+
+

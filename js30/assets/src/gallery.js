@@ -1,5 +1,6 @@
 const gallery = document.querySelector(".gallery");
 const search = document.querySelector(".search__field");
+search.focus();
 const searchButton = document.querySelector(".search__button");
 
 const keyAPI = "xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo"
