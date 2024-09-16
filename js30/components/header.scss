@@ -8,6 +8,44 @@
     justify-content: space-between;
     margin: 10px;
   }
+
+  &__title {
+    font-size: 3em;
+    color: rgb(24, 173, 203);
+    text-shadow: 4px 2px 5px #000000;
+    &:hover {
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #000000, 2px 2px 2px white, 3px 3px 2px black,
+        4px 4px 4px black;
+    }
+
+    &_yellow {
+      color: hsl(53 70% 70%);
+    }
+
+    &_blue {
+      color: hsl(246deg 90.95% 37.99%);
+    }
+
+    &_black {
+      color: hsl(0deg 0% 0%);
+    }
+
+    &_white {
+      color: hsl(0deg 0% 100%);
+    }
+
+    &_green {
+      color: hsl(139.98deg 99.66% 21%);
+    }
+  }
 }
 
-
+@include mixins.device(mixins.$xs) {
+  .header {
+    &__wraper {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

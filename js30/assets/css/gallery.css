@@ -100,7 +100,7 @@ body {
   top: 6px;
   padding: 0 5px;
 }
-.search__icon:hover {
+.search__icon:active {
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.2);
 }
@@ -109,9 +109,15 @@ body {
   height: 20px;
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 440px) {
   .search__field {
     width: 150px;
+  }
+}
+@media not all and (pointer: coarse) {
+  .search__icon:hover {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
   }
 }
 .header__wraper {
@@ -120,6 +126,37 @@ body {
   align-items: center;
   justify-content: space-between;
   margin: 10px;
+}
+.header__title {
+  font-size: 3em;
+  color: rgb(24, 173, 203);
+  text-shadow: 4px 2px 5px #000000;
+}
+.header__title:hover {
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #000000, 2px 2px 2px white, 3px 3px 2px black, 4px 4px 4px black;
+}
+.header__title_yellow {
+  color: hsl(53, 70%, 70%);
+}
+.header__title_blue {
+  color: hsl(246, 90.95%, 37.99%);
+}
+.header__title_black {
+  color: hsl(0, 0%, 0%);
+}
+.header__title_white {
+  color: hsl(0, 0%, 100%);
+}
+.header__title_green {
+  color: hsl(139.98, 99.66%, 21%);
+}
+
+@media only screen and (max-width: 350px) {
+  .header__wraper {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 /*# sourceMappingURL=gallery.css.map */
