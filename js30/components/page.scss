@@ -13,5 +13,8 @@ body {
   flex-direction: column;
   min-width: max-content;
   min-height: 100vh;
-}
 
+  &_light {
+    background: white;
+  }
+}

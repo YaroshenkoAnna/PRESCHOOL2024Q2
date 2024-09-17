@@ -47,6 +47,9 @@ body {
   min-width: max-content;
   min-height: 100vh;
 }
+.page_light {
+  background: white;
+}
 
 .main {
   display: flex;
@@ -67,10 +70,6 @@ body {
   height: auto;
   object-fit: cover;
   box-sizing: border-box;
-  border: 2px solid white;
-  -webkit-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 @media only screen and (max-width: 769px) {
@@ -129,27 +128,15 @@ body {
 }
 .header__title {
   font-size: 3em;
-  color: rgb(24, 173, 203);
-  text-shadow: 4px 2px 5px #000000;
+  color: #8195a8;
+  -webkit-text-stroke: 2px #000;
 }
 .header__title:hover {
   cursor: pointer;
   text-shadow: 1px 1px 2px #000000, 2px 2px 2px white, 3px 3px 2px black, 4px 4px 4px black;
 }
-.header__title_yellow {
-  color: hsl(53, 70%, 70%);
-}
-.header__title_blue {
-  color: hsl(246, 90.95%, 37.99%);
-}
-.header__title_black {
-  color: hsl(0, 0%, 0%);
-}
-.header__title_white {
-  color: hsl(0, 0%, 100%);
-}
-.header__title_green {
-  color: hsl(139.98, 99.66%, 21%);
+.header__title_black_and_white {
+  color: #ebebeb;
 }
 
 @media only screen and (max-width: 350px) {

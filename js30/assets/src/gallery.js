@@ -8,7 +8,7 @@ gallery.addEventListener("dblclick", openbigImage);
 const keyAPI = "xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo"
 let searchUrl = `https://api.unsplash.com/search/photos?page=3&per_page=30&query="waterfall"
 }&orientation=landscape&client_id=xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo`;
-const colorThema = ["", "black", "white", "yellow", "green", "blue"];
+const colorThema = ["", "black_and_white"];
 let colorThemaNumber = 0;
 let color;
 const languages = ["en", "ru", "de"];
@@ -29,6 +29,7 @@ function changeThema(){
 }
 
 function isEnter(event){
+
     if (event.code === "Enter" || event.keyCode === 13) {
         createURL();    
     }
@@ -41,7 +42,6 @@ function createURL(lang){
     let i =  typeof lang === "number" ? lang : 0;
      searchUrl = `https://api.unsplash.com/search/photos?page=3&per_page=30&query=${searchValue
 }&orientation=landscape${color}&lang=${languages[i]}&client_id=xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo`;
-console.log(searchUrl);
         getData(searchUrl, i);    
 }
      
@@ -52,11 +52,14 @@ async function getData(url, index) {
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
+
   if (data.results.length === 0) {
       index++;
-      index < languages.length ? createURL(index) : "";
+      index < languages.length ? createURL(index) : createImages(data.results);
+  }else{
+     createImages(data.results); 
   }
-  createImages(data.results);
+  
   
 }
 
