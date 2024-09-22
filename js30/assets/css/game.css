@@ -60,15 +60,59 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+.game__cross {
+  position: absolute;
+  width: 100%;
+  color: red;
+  display: flex;
+  justify-content: center;
+  font-size: 34px;
+  font-family: sans-serif;
+  font-weight: 100;
+  top: -10px;
+}
 .game__cell {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(172, 172, 172);
   width: 30px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid rgb(104, 103, 103);
   box-sizing: border-box;
+}
+.game__cell_not-open {
+  border: 3px solid #d0cece;
+  border-style: outset;
+  cursor: pointer;
+}
+.game__cell_1 {
+  color: blue;
+}
+.game__cell_2 {
+  color: green;
+}
+.game__cell_3 {
+  color: red;
+}
+.game__cell_4 {
+  color: darkblue;
+}
+.game__cell_5 {
+  color: brown;
+}
+.game__cell_6 {
+  color: cyan;
+}
+.game__cell_7 {
+  color: black;
+}
+.game__cell_8 {
+  color: gray;
+}
+.game__cell_wrong {
+  background-color: red;
 }
 
 /*# sourceMappingURL=game.css.map */

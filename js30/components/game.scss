@@ -6,14 +6,69 @@
     flex-wrap: wrap;
   }
 
+  &__cross {
+    position: absolute;
+    width: 100%;
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-size: 34px;
+    font-family: sans-serif;
+    font-weight: 100;
+    top: -10px;
+  }
+
   &__cell {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(172, 172, 172);
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid rgb(104, 103, 103);
     box-sizing: border-box;
+
+    &_not-open {
+      border: 3px solid #d0cece;
+      border-style: outset;
+      cursor: pointer;
+    }
+
+    &_1 {
+      color: blue;
+    }
+
+    &_2 {
+      color: green;
+    }
+
+    &_3 {
+      color: red;
+    }
+
+    &_4 {
+      color: darkblue;
+    }
+
+    &_5 {
+      color: brown;
+    }
+
+    &_6 {
+      color: cyan;
+    }
+
+    &_7 {
+      color: black;
+    }
+
+    &_8 {
+      color: gray;
+    }
+
+    &_wrong {
+      background-color: red;
+    }
   }
 }
