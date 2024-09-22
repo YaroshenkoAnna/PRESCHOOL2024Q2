@@ -56,6 +56,22 @@ body {
   justify-content: center;
 }
 
+.game__header {
+  display: flex;
+}
+.game__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(172, 172, 172);
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+  border: 3px solid #d0cece;
+  border-style: outset;
+  cursor: pointer;
+  font-size: 40px;
+}
 .game__field {
   display: flex;
   flex-wrap: wrap;
@@ -81,6 +97,9 @@ body {
   height: 30px;
   border: 1px solid rgb(104, 103, 103);
   box-sizing: border-box;
+  font-family: arial;
+  font-size: 20px;
+  font-weight: 900;
 }
 .game__cell_not-open {
   border: 3px solid #d0cece;

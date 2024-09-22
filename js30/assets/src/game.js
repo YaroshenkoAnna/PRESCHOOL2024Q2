@@ -1,6 +1,10 @@
+document.querySelector(".game").addEventListener("contextmenu", function(event){event.preventDefault()});
+
+// main logik of game
+const button = document.querySelector(".game__button");
 const field = document.querySelector(".game__field");
-let fieldIsReady = false;
-const matrix = [];
+let fieldIsReady;
+let matrix;
 const numberOfBombs = 60;
     
 class Cell {
@@ -27,12 +31,14 @@ class Cell {
           generateValuesOfCells();
           fieldIsReady = true;
       }
+      if(this.isOpen || this.isFlagged){
+        return;
+      }
+     
       this.isOpen = true;
 
       if (this.isBomb) {
-          if (this.isFlagged) {
-            return;  
-          }
+          
           this.fieldCell.textContent = "💣";
            if (!document.querySelector(".game__cell_wrong")) {
                this.fieldCell.classList.add("game__cell_wrong");
@@ -64,7 +70,13 @@ class Cell {
 }
 
 function startGame(){
+    fieldIsReady = false;
+    matrix = [];
+    field.textContent="";
+    makeHappyEmoji();
     createField();
+    field.addEventListener("mousedown", makeAmazeEmoji);
+    field.addEventListener("mouseup", makeHappyEmoji);
 }
 
 function createField( width = 18, height = 18 ){
@@ -158,15 +170,17 @@ function defineNeighbours(j, i){
 }
 
 function gameOver(){
+    makeUpsetEmoji();
      for (let j = 0; j < matrix.length; j++) {
         for (let i = 0; i < matrix[0].length; i++) { 
              if (matrix[j][i].isOpen) {
                  continue;
              }  
-             matrix[j][i].isOpen = true;
+             
              if (matrix[j][i].isBomb){
                  matrix[j][i].open();
              }
+             matrix[j][i].isOpen = true;
              if (!matrix[j][i].isBomb && matrix[j][i].isFlagged) {
                  const cross = document.createElement("div");
                 cross.classList.add("game__cross");
@@ -178,8 +192,26 @@ function gameOver(){
    }
 }
 
-
-
 startGame();
+
+
+
+// emoji
+
+function makeUpsetEmoji() {
+    button.textContent = "🙁";
+    field.removeEventListener("mousedown", makeAmazeEmoji);
+    field.removeEventListener("mouseup", makeHappyEmoji);
+}
+
+function makeAmazeEmoji() {
+    button.textContent = "😮";
+}
+
+function makeHappyEmoji() {
+    button.textContent = "🙂"; 
+}
+
+button.addEventListener("click", startGame);
 
 
