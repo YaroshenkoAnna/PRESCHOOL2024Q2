@@ -1,0 +1,19 @@
+@use "../assets/css/mixins.scss";
+
+.game {
+  &__field {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(172, 172, 172);
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
+}

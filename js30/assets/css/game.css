@@ -1,0 +1,74 @@
+:root {
+  --color-light-s: #fafafa;
+}
+
+@font-face {
+  font-family: Inria Sans;
+  src: url("../fonts/InriaSans-Regular.ttf");
+}
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 900;
+  color: black;
+  margin-top: auto;
+}
+.footer__logo {
+  width: 80px;
+}
+.footer__wraper {
+  margin: 20px auto auto;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__link {
+  text-decoration: none;
+  color: #999aaa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+body {
+  height: 100%;
+}
+
+.page {
+  background: radial-gradient(circle, rgb(55, 51, 129) 0%, rgba(38, 38, 175, 0.9570421919) 50%, rgb(24, 173, 203) 100%);
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  min-height: 100vh;
+}
+.page_light {
+  background: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.game__field {
+  display: flex;
+  flex-wrap: wrap;
+}
+.game__cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(172, 172, 172);
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=game.css.map */

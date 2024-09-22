@@ -6,12 +6,12 @@ const searchButton = document.querySelector(".search__button");
 gallery.addEventListener("dblclick", openbigImage);
 
 const keyAPI = "xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo"
-let searchUrl = `https://api.unsplash.com/search/photos?page=3&per_page=30&query="waterfall"
+let searchUrl = `https://api.unsplash.com/search/photos?page=1&per_page=30&query="waterfall"
 }&orientation=landscape&client_id=xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo`;
 const colorThema = ["", "black_and_white"];
 let colorThemaNumber = 0;
 let color;
-const languages = ["en", "ru", "de"];
+
 title.addEventListener("click", changeThema);
 
 search.addEventListener("keydown", isEnter);
@@ -35,14 +35,14 @@ function isEnter(event){
     }
 }
 
-function createURL(lang){
+function createURL(){
   
     color = colorThemaNumber === 0 ? "" : `&color=${colorThema[colorThemaNumber]}`;
     let searchValue = search.value || "waterfall"; 
-    let i =  typeof lang === "number" ? lang : 0;
-     searchUrl = `https://api.unsplash.com/search/photos?page=3&per_page=30&query=${searchValue
-}&orientation=landscape${color}&lang=${languages[i]}&client_id=xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo`;
-        getData(searchUrl, i);    
+    
+     searchUrl = `https://api.unsplash.com/search/photos?page=1&per_page=30&query=${searchValue
+}&orientation=landscape${color}&client_id=xnPITw_67ECTxQDMG6GElKHBcJB1fDz2lE39zuw9Neo`;
+        getData(searchUrl);    
 }
      
    
@@ -53,12 +53,9 @@ async function getData(url, index) {
   const data = await res.json();
   console.log(data);
 
-  if (data.results.length === 0) {
-      index++;
-      index < languages.length ? createURL(index) : createImages(data.results);
-  }else{
+  
      createImages(data.results); 
-  }
+ 
   
   
 }
