@@ -194,6 +194,9 @@ function isAllValueOpen(){
 function victory(){
     makeVictoryEmoji();
     stopTimer();  
+    const notOpenedCells = document.querySelectorAll(".game__cell_not-open");
+    notOpenedCells.forEach(elem => {elem.textContent = "🚩"; });
+
 }
 
 function gameOver() {
