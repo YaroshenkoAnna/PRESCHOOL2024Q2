@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sapper</title>
+    <title>Minesweeper</title>
     <link rel="stylesheet" href="assets/css/normalize.css " />
     <link rel="stylesheet" href="assets/css/game.css" />
     <link rel="icon" href="assets/images/bomb.png" type="image/x-icon" />
@@ -15,11 +15,37 @@
         <div class="container">
           <div class="game">
             <div class="game__header">
-              <div class="game__rest"></div>
+              <div class="game__rest">000</div>
               <div class="game__button">🙂</div>
-              <div class="game__timer"></div>
+              <div class="game__timer">000</div>
             </div>
-            <div class="game__field"></div>
+            <div class="game__wraper">
+              <div class="game__field"></div>
+            </div>
+
+            <div class="game__footer">
+              <div class="game__button">
+                <img
+                  src="assets/images/rating.png"
+                  alt="rating"
+                  class="game__rating"
+                />
+              </div>
+              <div class="game__button">
+                <img
+                  src="assets/images/sound-on.png"
+                  alt="sound"
+                  class="game__sound"
+                />
+              </div>
+              <div class="game__button">
+                <img
+                  src="assets/images/settings.png"
+                  alt="settings"
+                  class="game__settings"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

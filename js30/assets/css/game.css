@@ -3,8 +3,12 @@
 }
 
 @font-face {
-  font-family: Inria Sans;
-  src: url("../fonts/InriaSans-Regular.ttf");
+  font-family: "Wallpoet-Regular";
+  src: url("../fonts/Wallpoet-Regular.ttf");
+}
+@font-face {
+  font-family: "DSEG14Classic-Bold";
+  src: url("../fonts/DSEG14Classic-Bold.ttf");
 }
 .footer {
   font-family: Arial, Helvetica, sans-serif;
@@ -56,16 +60,41 @@ body {
   justify-content: center;
 }
 
+.game {
+  background-color: rgb(172, 172, 172);
+  user-select: none;
+}
 .game__header {
+  padding: 11px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game__wraper {
+  border: 4px solid #d0cece;
+  border-style: inset;
+  padding: 20px;
+}
+.game__rest, .game__timer {
+  background-color: black;
+  border: 2px solid #d0cece;
+  border-style: inset;
+  font-family: "DSEG14Classic-Bold";
+  font-size: 30px;
+  color: red;
+  width: 78px;
+  height: 40px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 .game__button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(172, 172, 172);
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   box-sizing: border-box;
   border: 3px solid #d0cece;
   border-style: outset;
@@ -132,6 +161,16 @@ body {
 }
 .game__cell_wrong {
   background-color: red;
+}
+.game__footer {
+  padding: 11px;
+  background-color: rgb(172, 172, 172);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game__settings, .game__rating, .game__sound {
+  height: 35px;
 }
 
 /*# sourceMappingURL=game.css.map */
