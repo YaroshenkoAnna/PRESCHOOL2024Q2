@@ -26,7 +26,7 @@ class Cell {
         fieldCell.classList.add("game__cell", "game__cell_not-open");
         field.appendChild(fieldCell);
         this.fieldCell = fieldCell;
-        this.fieldCell.addEventListener("click", this.open.bind(this), { once: true });
+        this.fieldCell.addEventListener("click", this.open.bind(this));
         this.fieldCell.addEventListener("contextmenu", this.setFlag.bind(this));
     }
 
