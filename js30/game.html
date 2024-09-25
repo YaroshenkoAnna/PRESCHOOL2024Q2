@@ -16,7 +16,7 @@
           <div class="game">
             <div class="game__header">
               <div class="game__rest">000</div>
-              <div class="game__button">🙂</div>
+              <div class="game__button" id="emoji">🙂</div>
               <div class="game__timer">000</div>
             </div>
             <div class="game__wraper">
@@ -38,12 +38,139 @@
                   class="game__sound"
                 />
               </div>
-              <div class="game__button">
+              <div class="game__button" id="settings">
                 <img
                   src="assets/images/settings.png"
                   alt="settings"
                   class="game__settings"
                 />
+              </div>
+            </div>
+          </div>
+
+          <div class="settings">
+            <div class="settings__content">
+              <h1 class="settings__title">Settings</h1>
+              <h2 class="settings__subtitle">Game Type</h2>
+              <div class="settings__wraper">
+                <ul class="settings__list">
+                  <li class="settings__option">
+                    <div class="settings__option-wraper">
+                      <label class="settings__option-title" for="Beginner"
+                        >Beginner</label
+                      >
+                      <span class="settings__option-description"
+                        >Field size 8x8 - 10 mines</span
+                      >
+                    </div>
+                    <input
+                      checked
+                      type="radio"
+                      id="beginner"
+                      name="settings"
+                      value="Beginner"
+                    />
+                  </li>
+                  <li class="settings__option">
+                    <div class="settings__option-wraper">
+                      <label class="settings__option-title" for="Intermediate"
+                        >Intermediate</label
+                      >
+                      <span class="settings__option-description"
+                        >Field size 16x16 - 40 mines</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Intermediate"
+                      name="settings"
+                      value="Intermediate"
+                    />
+                  </li>
+                  <li class="settings__option">
+                    <div class="settings__option-wraper">
+                      <label class="settings__option-title" for="Expert"
+                        >Expert</label
+                      >
+                      <span class="settings__option-description"
+                        >Field size 30x16 - 99 mines</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Expert"
+                      name="settings"
+                      value="Expert"
+                    />
+                  </li>
+                  <li class="settings__option">
+                    <div class="settings__option-wraper">
+                      <label class="settings__option-title" for="Custom"
+                        >Custom</label
+                      >
+                      <span class="settings__option-description"
+                        >Customizable field size and mine count</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Custom"
+                      name="settings"
+                      value="Custom"
+                    />
+                  </li>
+                </ul>
+                <form class="settings__custom" id="custom-settings">
+                  <div class="settings__item settings__item_disabled">
+                    <label for="width" class="settings__item-title"
+                      >Width</label
+                    >
+                    <input
+                      class="settings__number"
+                      type="number"
+                      id="width"
+                      name="width"
+                      min="8"
+                      max="100"
+                      value="8"
+                      disabled
+                    />
+                  </div>
+                  <div class="settings__item settings__item_disabled">
+                    <label for="Height" class="settings__item-title"
+                      >Height</label
+                    >
+                    <input
+                      class="settings__number"
+                      type="number"
+                      id="height"
+                      name="height"
+                      min="8"
+                      max="100"
+                      value="8"
+                      disabled
+                    />
+                  </div>
+                  <div class="settings__item settings__item_disabled">
+                    <label for="mines" class="settings__item-title"
+                      >Mines</label
+                    >
+                    <input
+                      class="settings__number"
+                      type="number"
+                      id="mines"
+                      name="mines"
+                      min="1"
+                      max="100"
+                      value="10"
+                      disabled
+                    />
+                  </div>
+                </form>
+                <div class="settings__buttons">
+                  <button class="settings__button" id="ok">OK</button>
+                  <button class="settings__button" id="cancel">Cancel</button>
+                </div>
               </div>
             </div>
           </div>

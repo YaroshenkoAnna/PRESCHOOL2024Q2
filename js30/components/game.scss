@@ -134,3 +134,135 @@
     height: 30px;
   }
 }
+
+.settings {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+  font-family: "Poppins";
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1s ease;
+
+  &_open {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__item-title {
+    font-size: 12px;
+  }
+
+  &__content {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+
+    top: calc(50% - 175px);
+    left: calc(50% - 175px);
+    border-radius: 10px;
+    cursor: default;
+
+    background-color: rgb(172, 172, 172);
+  }
+
+  &__title {
+    border-bottom: 1px solid black;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 0;
+  }
+
+  &__subtitle {
+    background-color: rgb(155, 154, 154);
+    border-bottom: 1px solid black;
+    font-size: 17px;
+    padding: 5px 10px;
+  }
+
+  &__wraper {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px;
+  }
+
+  &__option-title {
+    font-size: 14px;
+    color: rgb(42, 42, 42);
+  }
+
+  &__option-description {
+    font-size: 10px;
+    color: rgb(104, 103, 103);
+  }
+
+  &__option-wraper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__number {
+    background-color: white;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  &__number:disabled {
+    color: rgb(177, 176, 176);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__button {
+    text-align: center;
+    padding: 3px;
+    margin: 30px 0 0;
+    border: 1px solid black;
+    border-radius: 10%;
+    background-color: #d0cece;
+  }
+
+  &__item_disabled {
+    color: rgb(104, 103, 103);
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  background-color: lightgray;
+  border: 2px solid darkgray;
+  width: 15px;
+  height: 30px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  background-color: darkgray;
+}

@@ -1,17 +1,20 @@
 document.querySelector(".game").addEventListener("contextmenu", function (event) { event.preventDefault() });
 
 // main logic of game
-const button = document.querySelector(".game__button");
+const button = document.getElementById("emoji");
 const field = document.querySelector(".game__field");
 const time = document.querySelector(".game__timer");
 const rest = document.querySelector(".game__rest");
+const settings = document.getElementById("settings");
+const settingsAgreeButton = document.getElementById("ok");
+const cancel = document.getElementById("cancel");
+const areaSettings = document.querySelector(".settings");
 let fieldIsReady;
 let matrix;
 let timer;
 
-let numberOfBombs = 10;
-let restOfBombs;
-let numberValueCells;
+let numberOfBombs, restOfBombs, numberValueCells, width, height;
+
 class Cell {
     constructor(coordinates) {
         this.coordinates = coordinates;
@@ -81,19 +84,26 @@ class Cell {
 
 function startGame() {
      stopTimer();
+     matrix = [];
+     fieldIsReady = false;
+     field.textContent = "";
+     makeHappyEmoji();
+     time.textContent = 0;
+     createField();
      restOfBombs = numberOfBombs;
      showRest();
-    time.textContent = 0;
-    fieldIsReady = false;
-    matrix = [];
-    field.textContent = "";
-    makeHappyEmoji();
-    createField();
+     time.textContent = 0;
+   
     field.addEventListener("mousedown", makeAmazeEmoji);
     field.addEventListener("mouseup", makeHappyEmoji);
 }
 
-function createField(width = 8, height = 8) {
+function createField() {
+    if (!width) {
+        width = 8; 
+        height = 8; 
+        numberOfBombs = 10;
+    }
     numberValueCells = width * height - numberOfBombs;
     field.style.maxWidth = `${width * 30}px `;
     field.style.maxHeight = `${height * 30}px `;
@@ -196,7 +206,8 @@ function victory(){
     stopTimer();  
     const notOpenedCells = document.querySelectorAll(".game__cell_not-open");
     notOpenedCells.forEach(elem => {elem.textContent = "🚩"; });
-
+    restOfBombs = 0;
+    showRest(); 
 }
 
 function gameOver() {
@@ -264,9 +275,79 @@ function stopTimer(){
         clearInterval(timer);
 }
 
+//rest of bombs
+
 function showRest(){
     rest.textContent = restOfBombs.toString().padStart(3, '0');
 }
+
+//settings
+
+settings.addEventListener("click", showSettings);
+settingsAgreeButton.addEventListener("click", applySettings);
+cancel.addEventListener("click", closeSettings);
+areaSettings.addEventListener("click", closeSettings);
+
+function showSettings(){
+    areaSettings.classList.add("settings_open");
+}
+
+function applySettings(){
+     const selectedOption = document.querySelector('input[name="settings"]:checked').value;
+
+        if (selectedOption === 'Beginner') {
+            width = 8;
+            height = 8;
+            numberOfBombs = 10;
+        } else if (selectedOption === 'Intermediate') {
+            width = 16;
+            height = 16;
+            numberOfBombs = 40;
+        } else if (selectedOption === 'Expert') {
+            width = 30;
+            height = 16;
+            numberOfBombs = 99;
+        } else if (selectedOption === 'Custom') {
+            width = document.getElementById('width').value;
+            height = document.getElementById('height').value;
+            numberOfBombs = document.getElementById('mines').value;
+        }
+
+        closeSettings("ok");
+        startGame();
+}
+
+function closeSettings(event){
+    if (event === "ok" || event.target === cancel || event.target === areaSettings) {
+        areaSettings.classList.remove("settings_open");
+    }
+  
+}
+
+const radioButtons = document.querySelectorAll('input[name="settings"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'Custom') {
+                enableCustomSettings(true);
+            } else {
+                enableCustomSettings(false);
+            }
+        });
+    });
+
+
+    function enableCustomSettings(enable) {
+        const customSettings = document.querySelectorAll('.settings__number');
+        customSettings.forEach(input => {
+            input.disabled = !enable; 
+            if (enable) {
+                input.parentElement.classList.remove('settings__item_disabled'); 
+            } else {
+                input.parentElement.classList.add('settings__item_disabled');
+            }
+        });
+    }
+
 
 
 
