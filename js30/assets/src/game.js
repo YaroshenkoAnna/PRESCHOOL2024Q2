@@ -1,3 +1,4 @@
+
 document.querySelector(".game").addEventListener("contextmenu", function (event) { event.preventDefault() });
 
 // main logic of game
@@ -11,9 +12,11 @@ const cancel = document.getElementById("cancel");
 const areaSettings = document.querySelector(".settings");
 let fieldIsReady;
 let matrix;
-let timer;
+let timer, numberOfBombs, restOfBombs, numberValueCells, width, height;
 
-let numberOfBombs, restOfBombs, numberValueCells, width, height;
+//audio
+const applause = new Audio("assets/audios/applause.mp3");
+const explosion = new Audio("assets/audios/explosion.mp3");
 
 class Cell {
     constructor(coordinates) {
@@ -47,7 +50,7 @@ class Cell {
         this.isOpen = true;
 
         if (this.isBomb) {
-
+            explosion.play();
             this.fieldCell.textContent = "💣";
             if (!document.querySelector(".game__cell_wrong")) {
                 this.fieldCell.classList.add("game__cell_wrong");
@@ -88,11 +91,10 @@ function startGame() {
      fieldIsReady = false;
      field.textContent = "";
      makeHappyEmoji();
-     time.textContent = 0;
+     time.textContent = "000";
      createField();
      restOfBombs = numberOfBombs;
      showRest();
-     time.textContent = 0;
    
     field.addEventListener("mousedown", makeAmazeEmoji);
     field.addEventListener("mouseup", makeHappyEmoji);
@@ -202,12 +204,19 @@ function isAllValueOpen(){
 }
 
 function victory(){
+    applause.play();
     makeVictoryEmoji();
     stopTimer();  
-    const notOpenedCells = document.querySelectorAll(".game__cell_not-open");
-    notOpenedCells.forEach(elem => {elem.textContent = "🚩"; });
+    window.setTimeout(flagBombs, 200)
     restOfBombs = 0;
     showRest(); 
+
+    function flagBombs(){
+      const notOpenedCells = document.querySelectorAll(".game__cell_not-open");  
+        notOpenedCells.forEach(elem => {elem.textContent = "🚩"; });
+    }
+  
+    
 }
 
 function gameOver() {
@@ -266,8 +275,11 @@ button.addEventListener("click", startGame);
 function startTimer() {
     let seconds = 1 ;
     timer = setInterval(function () {
-        time.textContent = seconds;
+        time.textContent = seconds.toString().padStart(3, '0');
         seconds++;
+        if (seconds === 1000) {
+            stopTimer();
+        }
     }, 1000);
 }
 
@@ -349,8 +361,31 @@ const radioButtons = document.querySelectorAll('input[name="settings"]');
     }
 
 
+const widthInput = document.getElementById('width');
+const heightInput = document.getElementById('height');
+const minesInput = document.getElementById('mines');
 
+function updateMinesMax(event) {
+     if (widthInput.value > 30) {
+        widthInput.value = 30;
+    }
 
+    if (heightInput.value > 16) {
+        heightInput.value = 16;
+    }
 
+    const customWidth = Number(widthInput.value);
+    const customHeight = Number(heightInput.value);
+    const maxMines = Math.floor(customWidth * customHeight * 0.9); 
+    minesInput.max = maxMines; 
+     
+    if (minesInput.value > maxMines) {
+        minesInput.value = maxMines;
+    }
+}
+
+widthInput.addEventListener('input', updateMinesMax);
+heightInput.addEventListener('input', updateMinesMax);
+minesInput.addEventListener('input', updateMinesMax);
 
 

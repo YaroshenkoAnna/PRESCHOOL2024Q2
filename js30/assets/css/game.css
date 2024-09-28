@@ -104,6 +104,10 @@ body {
   border-style: outset;
   cursor: pointer;
   font-size: 32px;
+  transition: transform 0.3s ease;
+}
+.game__button:active {
+  transform: scale(1.1);
 }
 .game__field {
   display: flex;
