@@ -51,7 +51,6 @@ function createURL(lang){
 async function getData(url, index) {
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
 
   if (data.results.length === 0) {
       index++;
@@ -98,3 +97,5 @@ function openbigImage(event){
     }
    
 }
+
+console.log("70/60. Выполнены все пункты ТЗ, добавлено переключение на чб тему при клике на название в header, присутсвует открытие полноразмерной фотографии при двойном клике на ней");
