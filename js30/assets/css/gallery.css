@@ -133,6 +133,8 @@ body {
 }
 .header__title:hover {
   cursor: pointer;
+}
+.header__title:active {
   text-shadow: 1px 1px 2px #000000, 2px 2px 2px white, 3px 3px 2px black, 4px 4px 4px black;
 }
 .header__title_black_and_white {
