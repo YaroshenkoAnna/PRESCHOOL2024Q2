@@ -8,12 +8,17 @@ const time = document.querySelector(".game__timer");
 const rest = document.querySelector(".game__rest");
 const settings = document.getElementById("settings");
 const settingsAgreeButton = document.getElementById("ok");
-const cancel = document.getElementById("cancel");
-const areaSettings = document.querySelector(".settings");
+const areaSettings = document.querySelector(".game__settings");
+const areaRating = document.querySelector(".game__ranking");
+const modalVictory = document.querySelector(".game__victory");
+const ranking = document.getElementById("ranking");
+let difficult = "Beginner";
 let fieldIsReady;
 let matrix;
 let timer, numberOfBombs, restOfBombs, numberValueCells, width, height;
-
+let leaderboardBeginner = [];
+let leaderboardIntermediate = [];
+let leaderboardExpert = [];
 //audio
 const applause = new Audio("assets/audios/applause.mp3");
 const explosion = new Audio("assets/audios/explosion.mp3");
@@ -98,6 +103,8 @@ function startGame() {
    
     field.addEventListener("mousedown", makeAmazeEmoji);
     field.addEventListener("mouseup", makeHappyEmoji);
+    field.addEventListener("touchstart", makeAmazeEmoji);
+    field.addEventListener("touchend", makeHappyEmoji);
 }
 
 function createField() {
@@ -210,6 +217,8 @@ function victory(){
     window.setTimeout(flagBombs, 200)
     restOfBombs = 0;
     showRest(); 
+    checkTime();
+    
 
     function flagBombs(){
       const notOpenedCells = document.querySelectorAll(".game__cell_not-open");  
@@ -253,6 +262,8 @@ function makeUpsetEmoji() {
     button.textContent = "🙁";
     field.removeEventListener("mousedown", makeAmazeEmoji);
     field.removeEventListener("mouseup", makeHappyEmoji);
+    field.removeEventListener("touchstart", makeAmazeEmoji);
+    field.removeEventListener("touchend", makeHappyEmoji);
 }
 
 function makeAmazeEmoji() {
@@ -295,43 +306,62 @@ function showRest(){
 
 //settings
 
-settings.addEventListener("click", showSettings);
+settings.addEventListener("click", showModal);
+ranking.addEventListener("click", showModal);
 settingsAgreeButton.addEventListener("click", applySettings);
-cancel.addEventListener("click", closeSettings);
-areaSettings.addEventListener("click", closeSettings);
+areaSettings.addEventListener("click", closeModal);
+areaRating.addEventListener("click", closeModal);
 
-function showSettings(){
-    areaSettings.classList.add("settings_open");
+function showModal(event){
+    let chooseModal;
+    if (event == modalVictory) {
+        chooseModal = modalVictory;
+    } else if (event.target.closest("#settings")) {
+        chooseModal = areaSettings;
+    }else if (event.target.closest("#ranking")) {
+        chooseModal = areaRating;
+    }
+
+   
+    chooseModal.classList.add("modal_open");
 }
+const widthInput = document.getElementById('width');
+const heightInput = document.getElementById('height');
+const minesInput = document.getElementById('mines');
 
-function applySettings(){
+function applySettings(event){
      const selectedOption = document.querySelector('input[name="settings"]:checked').value;
 
         if (selectedOption === 'Beginner') {
             width = 8;
             height = 8;
             numberOfBombs = 10;
+            difficult = "Beginner";
         } else if (selectedOption === 'Intermediate') {
             width = 16;
             height = 16;
             numberOfBombs = 40;
+            difficult = "Intermediate";
         } else if (selectedOption === 'Expert') {
             width = 30;
             height = 16;
             numberOfBombs = 99;
+            difficult = "Expert";
         } else if (selectedOption === 'Custom') {
-            width = document.getElementById('width').value;
-            height = document.getElementById('height').value;
-            numberOfBombs = document.getElementById('mines').value;
+
+            width = widthInput.value < 8 ? 8 : widthInput.value;
+            height = heightInput.value < 8 ? 8 : heightInput.value;
+            numberOfBombs = minesInput.value < 1 ? 1 : minesInput.value;
+            difficult = null;
         }
 
-        closeSettings("ok");
+        closeModal(event);
         startGame();
 }
 
-function closeSettings(event){
-    if (event === "ok" || event.target === cancel || event.target === areaSettings) {
-        areaSettings.classList.remove("settings_open");
+function closeModal(event){
+    if (event.target.classList.contains("modal__button") || event.target.classList.contains("modal")) {
+        event.target.closest(".modal").classList.remove("modal_open");
     }
   
 }
@@ -349,21 +379,19 @@ const radioButtons = document.querySelectorAll('input[name="settings"]');
 
 
     function enableCustomSettings(enable) {
-        const customSettings = document.querySelectorAll('.settings__number');
+        const customSettings = document.querySelectorAll('.modal__number');
         customSettings.forEach(input => {
             input.disabled = !enable; 
             if (enable) {
-                input.parentElement.classList.remove('settings__item_disabled'); 
+                input.parentElement.classList.remove('modal__item_disabled'); 
             } else {
-                input.parentElement.classList.add('settings__item_disabled');
+                input.parentElement.classList.add('modal__item_disabled');
             }
         });
     }
 
 
-const widthInput = document.getElementById('width');
-const heightInput = document.getElementById('height');
-const minesInput = document.getElementById('mines');
+
 
 function updateMinesMax(event) {
      if (widthInput.value > 30) {
@@ -382,10 +410,61 @@ function updateMinesMax(event) {
     if (minesInput.value > maxMines) {
         minesInput.value = maxMines;
     }
+   
 }
 
 widthInput.addEventListener('input', updateMinesMax);
 heightInput.addEventListener('input', updateMinesMax);
 minesInput.addEventListener('input', updateMinesMax);
 
+
+// ranking
+modalVictory.addEventListener("click", closeModal);
+document.getElementById("ranking-option").addEventListener("click", makeActive);
+
+function makeActive(event){
+    const eClass = event.target.classList;
+ if (eClass.contains("modal__ranking-option") && !eClass.contains("modal__ranking-option_active")) {
+     document.querySelector(".modal__ranking-option_active").classList.remove("modal__ranking-option_active");
+     eClass.add("modal__ranking-option_active");
+     const level = event.target.textContent;
+    getRanking(level);
+ }
+}
+
+function getRanking(l){
+
+}
+
+
+
+function checkTime(){
+    
+    if (!difficult) {
+        hideNameInput();
+        return;
+    }
+    showNameInput();
+    showModal(modalVictory);
+    let leaderboard =[];
+   const winner = document.getElementById("name").value;
+   let checkedTime = parseInt(time.textContent, 10);
+   if (localStorage.getItem(`leaderboard${difficult}`)) {
+      leaderboard = JSON.parse(localStorage.getItem(`leaderboard${difficult}`));
+      console.log(leaderboard);
+   }
+   leaderboard.push({winner, checkedTime });
+   leaderboard.sort((a, b) => b.checkedTime - a.checkTime);
+   localStorage.setItem(`leaderboard${difficult}`, JSON.stringify(leaderboard));
+}
+const nameInput = document.getElementById("nameVictory");
+
+
+function hideNameInput(){
+    nameInput.classList.add("modal__option-wraper_hide");
+}
+
+function showNameInput(){
+    nameInput.classList.remove("modal__option-wraper_hide");
+}
 

@@ -177,17 +177,16 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.game__settings, .game__rating, .game__sound {
+.game__button-image {
   height: 30px;
 }
 
-.settings {
+.modal {
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   width: 100%;
   height: 100%;
   cursor: pointer;
-  z-index: 1;
   font-family: "Poppins";
   top: 0;
   left: 0;
@@ -195,19 +194,19 @@ body {
   z-index: -1;
   transition: opacity 1s ease;
 }
-.settings_open {
+.modal_open {
   opacity: 1;
   z-index: 1;
 }
-.settings__item {
+.modal__item {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.settings__item-title {
+.modal__item-title {
   font-size: 12px;
 }
-.settings__content {
+.modal__content {
   position: absolute;
   width: 350px;
   height: 350px;
@@ -217,61 +216,98 @@ body {
   cursor: default;
   background-color: rgb(172, 172, 172);
 }
-.settings__title {
+.modal__content_long {
+  height: 460px;
+  top: calc(50% - 230px);
+}
+.modal__content_sm {
+  height: 150px;
+  width: 200px;
+  top: calc(50% - 75px);
+  left: calc(50% - 100px);
+}
+.modal__name {
+  margin-top: 10px;
+  width: 150px;
+  background: white;
+}
+.modal__ranking-option {
+  color: rgb(104, 103, 103);
+}
+.modal__ranking-option:hover {
+  cursor: pointer;
+}
+.modal__ranking-option_active {
+  font-weight: 900;
+  color: black;
+}
+.modal__title {
   border-bottom: 1px solid black;
   text-align: center;
   text-transform: uppercase;
   padding: 10px 0;
 }
-.settings__subtitle {
+.modal__subtitle {
   background-color: rgb(155, 154, 154);
   border-bottom: 1px solid black;
   font-size: 17px;
   padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
 }
-.settings__wraper {
+.modal__wraper {
   padding: 0 10px;
   display: flex;
   flex-direction: column;
 }
-.settings__option {
+.modal__option {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 8px;
 }
-.settings__option-title {
+.modal__option_title {
+  font-weight: 900;
+  text-decoration: underline;
+}
+.modal__option-title {
   font-size: 14px;
   color: rgb(42, 42, 42);
 }
-.settings__option-description {
+.modal__option-description {
   font-size: 10px;
   color: rgb(104, 103, 103);
 }
-.settings__option-wraper {
+.modal__option-wraper {
   display: flex;
   flex-direction: column;
 }
-.settings__custom {
+.modal__option-wraper_c {
+  align-items: center;
+}
+.modal__option-wraper_hide {
+  display: none;
+}
+.modal__custom {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.settings__number {
+.modal__number {
   background-color: white;
   text-align: center;
   margin-top: 5px;
   font-size: 12px;
 }
-.settings__number:disabled {
+.modal__number:disabled {
   color: rgb(177, 176, 176);
 }
-.settings__buttons {
+.modal__buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.settings__button {
+.modal__button {
   text-align: center;
   padding: 3px;
   margin: 30px 0 0;
@@ -279,7 +315,7 @@ body {
   border-radius: 10%;
   background-color: #d0cece;
 }
-.settings__item_disabled {
+.modal__item_disabled {
   color: rgb(104, 103, 103);
 }
 

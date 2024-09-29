@@ -24,35 +24,121 @@
             </div>
 
             <div class="game__footer">
-              <div class="game__button">
+              <div class="game__button" id="ranking">
                 <img
                   src="assets/images/rating.png"
                   alt="rating"
-                  class="game__rating"
+                  class="game__button-image"
                 />
               </div>
+
               <div class="game__button" id="settings">
                 <img
                   src="assets/images/settings.png"
                   alt="settings"
-                  class="game__settings"
+                  class="game__button-image"
                 />
               </div>
             </div>
           </div>
+          <div class="modal game__victory">
+            <div class="modal__content modal__content_sm">
+              <h2 class="modal__subtitle">Victory!</h2>
+              <div class="modal__option-wraper modal__option-wraper_c modal__option-wraper_hide" id="nameVictory">
+                <label for="name">Enter your name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="1"
+                  maxlength="20"
+                  size="10"
+                  class="modal__name"
+                />
+              </div>
+              <div class="modal__buttons">
+                <button class="modal__button" onclick="closeModal">Ok</button>
+              </div>
+            </div>
+          </div>
 
-          <div class="settings">
-            <div class="settings__content">
-              <h1 class="settings__title">Settings</h1>
-              <h2 class="settings__subtitle">Game Type</h2>
-              <div class="settings__wraper">
-                <ul class="settings__list">
-                  <li class="settings__option">
-                    <div class="settings__option-wraper">
-                      <label class="settings__option-title" for="Beginner"
+          <div class="modal game__ranking">
+            <div class="modal__content modal__content_long">
+              <h1 class="modal__title">Ranking</h1>
+              <div class="modal__subtitle" id="ranking-option">
+                <div class="modal__ranking-option modal__ranking-option_active">
+                  Beginner
+                </div>
+                <div class="modal__ranking-option">Intermediate</div>
+                <div class="modal__ranking-option">Expert</div>
+              </div>
+              <div class="modal__wraper">
+                <ul class="modal__list">
+                  <li class="modal__option modal__option_title">
+                    <span modal__option-title>Name</span>
+                    <span modal__option-title>Time</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                </ul>
+                <div class="modal__buttons">
+                  <button class="modal__button" onclick="closeModal">Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal game__settings">
+            <div class="modal__content">
+              <h1 class="modal__title">Settings</h1>
+              <h2 class="modal__subtitle">Game Type</h2>
+              <div class="modal__wraper">
+                <ul class="modal__list">
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Beginner"
                         >Beginner</label
                       >
-                      <span class="settings__option-description"
+                      <span class="modal__option-description"
                         >Field size 8x8 - 10 mines</span
                       >
                     </div>
@@ -64,12 +150,12 @@
                       value="Beginner"
                     />
                   </li>
-                  <li class="settings__option">
-                    <div class="settings__option-wraper">
-                      <label class="settings__option-title" for="Intermediate"
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Intermediate"
                         >Intermediate</label
                       >
-                      <span class="settings__option-description"
+                      <span class="modal__option-description"
                         >Field size 16x16 - 40 mines</span
                       >
                     </div>
@@ -80,12 +166,12 @@
                       value="Intermediate"
                     />
                   </li>
-                  <li class="settings__option">
-                    <div class="settings__option-wraper">
-                      <label class="settings__option-title" for="Expert"
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Expert"
                         >Expert</label
                       >
-                      <span class="settings__option-description"
+                      <span class="modal__option-description"
                         >Field size 30x16 - 99 mines</span
                       >
                     </div>
@@ -96,12 +182,12 @@
                       value="Expert"
                     />
                   </li>
-                  <li class="settings__option">
-                    <div class="settings__option-wraper">
-                      <label class="settings__option-title" for="Custom"
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Custom"
                         >Custom</label
                       >
-                      <span class="settings__option-description"
+                      <span class="modal__option-description"
                         >Customizable field size and mine count</span
                       >
                     </div>
@@ -113,13 +199,11 @@
                     />
                   </li>
                 </ul>
-                <form class="settings__custom" id="custom-settings">
-                  <div class="settings__item settings__item_disabled">
-                    <label for="width" class="settings__item-title"
-                      >Width</label
-                    >
+                <form class="modal__custom" id="custom-settings">
+                  <div class="modal__item modal__item_disabled">
+                    <label for="width" class="modal__item-title">Width</label>
                     <input
-                      class="settings__number"
+                      class="modal__number"
                       type="number"
                       id="width"
                       name="width"
@@ -129,12 +213,10 @@
                       disabled
                     />
                   </div>
-                  <div class="settings__item settings__item_disabled">
-                    <label for="Height" class="settings__item-title"
-                      >Height</label
-                    >
+                  <div class="modal__item modal__item_disabled">
+                    <label for="Height" class="modal__item-title">Height</label>
                     <input
-                      class="settings__number"
+                      class="modal__number"
                       type="number"
                       id="height"
                       name="height"
@@ -144,12 +226,10 @@
                       disabled
                     />
                   </div>
-                  <div class="settings__item settings__item_disabled">
-                    <label for="mines" class="settings__item-title"
-                      >Mines</label
-                    >
+                  <div class="modal__item modal__item_disabled">
+                    <label for="mines" class="modal__item-title">Mines</label>
                     <input
-                      class="settings__number"
+                      class="modal__number"
                       type="number"
                       id="mines"
                       name="mines"
@@ -160,9 +240,11 @@
                     />
                   </div>
                 </form>
-                <div class="settings__buttons">
-                  <button class="settings__button" id="ok">OK</button>
-                  <button class="settings__button" id="cancel">Cancel</button>
+                <div class="modal__buttons">
+                  <button class="modal__button" id="ok">OK</button>
+                  <button class="modal__button" onclick="closeModal">
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>
