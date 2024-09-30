@@ -43,8 +43,13 @@
           </div>
           <div class="modal game__victory">
             <div class="modal__content modal__content_sm">
-              <h2 class="modal__subtitle">Victory!</h2>
-              <div class="modal__option-wraper modal__option-wraper_c modal__option-wraper_hide" id="nameVictory">
+              <h2 class="modal__subtitle" id="winTime">
+                Victory! Your Time is 999s.
+              </h2>
+              <div
+                class="modal__option-wraper modal__option-wraper_c modal__option-wraper_hide"
+                id="nameVictory"
+              >
                 <label for="name">Enter your name</label>
                 <input
                   type="text"
@@ -58,7 +63,13 @@
                 />
               </div>
               <div class="modal__buttons">
-                <button class="modal__button" onclick="closeModal">Ok</button>
+                <button
+                  class="modal__button"
+                  onclick="closeModal"
+                  id="victoryOk"
+                >
+                  Ok
+                </button>
               </div>
             </div>
           </div>
@@ -74,7 +85,7 @@
                 <div class="modal__ranking-option">Expert</div>
               </div>
               <div class="modal__wraper">
-                <ul class="modal__list">
+                <ul class="modal__list" id="rankingList">
                   <li class="modal__option modal__option_title">
                     <span modal__option-title>Name</span>
                     <span modal__option-title>Time</span>

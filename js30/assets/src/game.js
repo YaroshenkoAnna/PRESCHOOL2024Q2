@@ -16,9 +16,7 @@ let difficult = "Beginner";
 let fieldIsReady;
 let matrix;
 let timer, numberOfBombs, restOfBombs, numberValueCells, width, height;
-let leaderboardBeginner = [];
-let leaderboardIntermediate = [];
-let leaderboardExpert = [];
+createRanking("Beginner");
 //audio
 const applause = new Audio("assets/audios/applause.mp3");
 const explosion = new Audio("assets/audios/explosion.mp3");
@@ -217,7 +215,7 @@ function victory(){
     window.setTimeout(flagBombs, 200)
     restOfBombs = 0;
     showRest(); 
-    checkTime();
+    getAndSetResults();
     
 
     function flagBombs(){
@@ -315,10 +313,13 @@ areaRating.addEventListener("click", closeModal);
 function showModal(event){
     let chooseModal;
     if (event == modalVictory) {
+        let winTime = document.getElementById("winTime");
+        winTime.textContent =`Victory! Your Time is ${parseInt(time.textContent, 10)}s.`;
         chooseModal = modalVictory;
     } else if (event.target.closest("#settings")) {
         chooseModal = areaSettings;
     }else if (event.target.closest("#ranking")) {
+        createRanking(difficult);
         chooseModal = areaRating;
     }
 
@@ -360,7 +361,7 @@ function applySettings(event){
 }
 
 function closeModal(event){
-    if (event.target.classList.contains("modal__button") || event.target.classList.contains("modal")) {
+    if (event.target.classList.contains("modal__button") || (event.target.classList.contains("modal") && !event.target.classList.contains("game__victory"))) {
         event.target.closest(".modal").classList.remove("modal_open");
     }
   
@@ -427,38 +428,56 @@ function makeActive(event){
  if (eClass.contains("modal__ranking-option") && !eClass.contains("modal__ranking-option_active")) {
      document.querySelector(".modal__ranking-option_active").classList.remove("modal__ranking-option_active");
      eClass.add("modal__ranking-option_active");
-     const level = event.target.textContent;
-    getRanking(level);
+     const level = event.target.textContent.trim();
+     createRanking(level);
  }
 }
 
-function getRanking(l){
-
-}
 
 
 
-function checkTime(){
+function getAndSetResults(){
     
     if (!difficult) {
         hideNameInput();
+        showModal(modalVictory);
         return;
     }
-    showNameInput();
-    showModal(modalVictory);
+   
     let leaderboard =[];
-   const winner = document.getElementById("name").value;
-   let checkedTime = parseInt(time.textContent, 10);
-   if (localStorage.getItem(`leaderboard${difficult}`)) {
+    let gameTime = parseInt(time.textContent, 10);
+    if (localStorage.getItem(`leaderboard${difficult}`)) {
       leaderboard = JSON.parse(localStorage.getItem(`leaderboard${difficult}`));
-      console.log(leaderboard);
-   }
-   leaderboard.push({winner, checkedTime });
-   leaderboard.sort((a, b) => b.checkedTime - a.checkTime);
-   localStorage.setItem(`leaderboard${difficult}`, JSON.stringify(leaderboard));
-}
-const nameInput = document.getElementById("nameVictory");
+      if (leaderboard[9] && leaderboard[9].gameTime < gameTime) {
+          hideNameInput();
+          showModal(modalVictory);
+          return;
+      } 
+    } 
+   showNameInput();
+   showModal(modalVictory);
+   const victoryOk = document.getElementById("victoryOk");
+   victoryOk.addEventListener("click", setResults);
+   document.getElementById("name").addEventListener("keydown", isEnter);
 
+   function isEnter(event){
+      if (event.code === "Enter" || event.keyCode === 13) {
+        setResults();   
+      }
+    }
+
+   function setResults(){
+      const winner = document.getElementById("name").value; 
+      leaderboard.push({winner, gameTime });
+      leaderboard.sort((a, b) => a.gameTime - b.gameTime);
+      leaderboard.length > 10 ? leaderboard.length  = 10 : ""; 
+      localStorage.setItem(`leaderboard${difficult}`, JSON.stringify(leaderboard));
+      victoryOk.removeEventListener("click", setResults);
+      document.getElementById("name").removeEventListener("keydown", isEnter);
+   }   
+}
+
+const nameInput = document.getElementById("nameVictory");
 
 function hideNameInput(){
     nameInput.classList.add("modal__option-wraper_hide");
@@ -466,5 +485,47 @@ function hideNameInput(){
 
 function showNameInput(){
     nameInput.classList.remove("modal__option-wraper_hide");
+}
+
+function createRanking(schowedRanking){
+    let rankingList = document.getElementById("rankingList");
+    rankingList.textContent = "";
+    let leaderboard = [];
+    if (localStorage.getItem(`leaderboard${schowedRanking}`)) {
+      leaderboard = JSON.parse(localStorage.getItem(`leaderboard${schowedRanking}`));
+    }
+
+        let rankingTitle = document.createElement("li");
+        rankingTitle.classList.add("modal__option", "modal__option_title");
+        
+        let rankingName = document.createElement("span");
+         rankingName.classList.add("modal__option-title");
+         rankingName.textContent = "Name";
+
+        let rankingTime = document.createElement("span");
+        rankingTime.classList.add("modal__option-title");
+        rankingTime.textContent = "Time";
+
+        rankingTitle.append(rankingName);
+        rankingTitle.append(rankingTime);
+        rankingList.append(rankingTitle);
+
+
+    for (let i = 0; i < 10; i++) {
+        let position = document.createElement("li");
+        position.classList.add("modal__option");
+        
+        let winner = document.createElement("span");
+         winner.classList.add("modal__option-title");
+         winner.textContent = leaderboard[i] ? leaderboard[i].winner : "Anonymous";
+
+        let winnerTime = document.createElement("span");
+        winnerTime.classList.add("modal__option-title");
+        winnerTime.textContent = leaderboard[i] ? leaderboard[i].gameTime : "999";
+
+        position.append(winner);
+        position.append(winnerTime);
+        rankingList.append(position);
+    }
 }
 
