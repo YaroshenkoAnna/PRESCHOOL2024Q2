@@ -319,7 +319,8 @@ function showModal(event){
     } else if (event.target.closest("#settings")) {
         chooseModal = areaSettings;
     }else if (event.target.closest("#ranking")) {
-        createRanking(difficult);
+        let active = document.querySelector(".modal__ranking-option_active");
+        createRanking(active.textContent.trim());
         chooseModal = areaRating;
     }
 
@@ -528,4 +529,6 @@ function createRanking(schowedRanking){
         rankingList.append(position);
     }
 }
+
+
 
