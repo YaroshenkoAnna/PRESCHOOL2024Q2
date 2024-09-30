@@ -216,11 +216,24 @@ function victory(){
     restOfBombs = 0;
     showRest(); 
     getAndSetResults();
-    
+    field.removeEventListener("mousedown", makeAmazeEmoji);
+    field.removeEventListener("mouseup", makeHappyEmoji);
+    field.removeEventListener("touchstart", makeAmazeEmoji);
+    field.removeEventListener("touchend", makeHappyEmoji);
 
     function flagBombs(){
-      const notOpenedCells = document.querySelectorAll(".game__cell_not-open");  
-        notOpenedCells.forEach(elem => {elem.textContent = "🚩"; });
+        for (let j = 0; j < matrix.length; j++) {
+            for (let i = 0; i < matrix[0].length; i++) {
+                if (matrix[j][i].isOpen) {
+                    continue;
+                }
+
+                if (matrix[j][i].isBomb) {
+                    matrix[j][i].fieldCell.textContent = "🚩";
+                    matrix[j][i].isOpen = true;
+                }
+            }
+        }
     }
   
     
