@@ -15,6 +15,7 @@ const ranking = document.getElementById("ranking");
 let difficult = "Beginner";
 let fieldIsReady;
 let matrix;
+let pressTimer;
 let timer, numberOfBombs, restOfBombs, numberValueCells, width, height;
 createRanking("Beginner");
 //audio
@@ -40,7 +41,11 @@ class Cell {
         this.fieldCell = fieldCell;
         this.fieldCell.addEventListener("click", this.open.bind(this));
         this.fieldCell.addEventListener("contextmenu", this.setFlag.bind(this));
+        this.fieldCell.addEventListener("touchstart", this.isLongPress.bind(this));
+        this.fieldCell.addEventListener('touchend', function() {clearTimeout(pressTimer);});
+        this.fieldCell.addEventListener('touchcancel', function() {clearTimeout(pressTimer)}); 
     }
+    
 
     open() {
         if (!fieldIsReady) {
@@ -77,17 +82,28 @@ class Cell {
         }
         this.fieldCell.classList.remove("game__cell_not-open");
         this.fieldCell.removeEventListener("contextmenu", this.setFlag.bind(this));
+        this.fieldCell.removeEventListener("touchstart", this.isLongPress.bind(this));
     }
 
-    setFlag() {
+    isLongPress(){
+        pressTimer = setTimeout(setFlag.bind(this), 250);
+    };
+
+    setFlag(event) {
+        event.preventDefault();
+
         if (this.isOpen) {
             return;
         }
+
         if (this.isFlagged) {
             this.fieldCell.textContent = "";
             this.isFlagged = false;
             restOfBombs++; 
         } else {
+            if (navigator.vibrate) {
+                navigator.vibrate(250);
+            } 
             flag.currentTime = 0;
             flag.play();
             this.fieldCell.textContent = "🚩";
