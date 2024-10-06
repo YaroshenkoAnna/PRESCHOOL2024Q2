@@ -20,6 +20,9 @@ createRanking("Beginner");
 //audio
 const applause = new Audio("assets/audios/applause.mp3");
 const explosion = new Audio("assets/audios/explosion.mp3");
+const click = new Audio("assets/audios/click.mp3");
+const flag = new Audio("assets/audios/flag.mp3");
+const sounds = [applause, explosion, click, flag];
 
 class Cell {
     constructor(coordinates) {
@@ -41,16 +44,18 @@ class Cell {
 
     open() {
         if (!fieldIsReady) {
+            startTimer();
             createBombs(this);
             generateValuesOfCells();
             fieldIsReady = true;
-            startTimer();
+            
         }
         if (this.isOpen || this.isFlagged) {
             return;
         }
 
         this.isOpen = true;
+        this.fieldCell.classList.add(`game__cell_${this.value}`);
 
         if (this.isBomb) {
             explosion.play();
@@ -60,9 +65,13 @@ class Cell {
                 gameOver();
             }
         } else if (this.value === 0) {
+            click.currentTime = 0;
+            click.play();
             isAllValueOpen();
             defineNeighbours(this.coordinates.j, this.coordinates.i).forEach(function (elem) { elem.open(); })
         } else {
+            click.currentTime = 0;
+             click.play();
             isAllValueOpen();
             this.fieldCell.textContent = this.value;
         }
@@ -79,6 +88,8 @@ class Cell {
             this.isFlagged = false;
             restOfBombs++; 
         } else {
+            flag.currentTime = 0;
+            flag.play();
             this.fieldCell.textContent = "🚩";
             this.isFlagged = true;
             restOfBombs--;
@@ -155,7 +166,7 @@ function generateValuesOfCells() {
     for (let j = 0; j < matrix.length; j++) {
         for (let i = 0; i < matrix[0].length; i++) {
             matrix[j][i].value = countBombs(j, i);
-            matrix[j][i].fieldCell.classList.add(`game__cell_${matrix[j][i].value}`);
+           
         }
     }
 }
@@ -296,9 +307,10 @@ button.addEventListener("click", startGame);
 
 function startTimer() {
     let seconds = 1 ;
+    time.textContent = seconds.toString().padStart(3, '0');
     timer = setInterval(function () {
-        time.textContent = seconds.toString().padStart(3, '0');
         seconds++;
+         time.textContent = seconds.toString().padStart(3, '0');
         if (seconds === 1000) {
             stopTimer();
         }
@@ -540,6 +552,25 @@ function createRanking(schowedRanking){
         position.append(winner);
         position.append(winnerTime);
         rankingList.append(position);
+    }
+}
+
+// SOUND
+
+const soundButton = document.getElementById("sound");
+const soundImage = document.getElementById("sound-image");
+soundButton.addEventListener("click", toggleSound);
+let isMuted = false;
+
+function toggleSound(){
+    if (isMuted) {
+        isMuted = false;
+        sounds.forEach(sound =>{sound.volume = 1});
+        soundImage.src = "assets/images/sound-on.png";
+    }else{
+        isMuted = true;
+        sounds.forEach(sound =>{sound.volume = 0});
+        soundImage.src = "assets/images/sound-off.png";
     }
 }
 
