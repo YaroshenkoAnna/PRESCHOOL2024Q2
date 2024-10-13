@@ -330,4 +330,9 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: darkgray;
 }
 
+.game__ranking .modal__content {
+  width: 380px;
+  top: calc(50% - 190px);
+}
+
 /*# sourceMappingURL=game.css.map */
