@@ -27,7 +27,7 @@ const explosion = new Audio("assets/audios/explosion.mp3");
 const click = new Audio("assets/audios/click.mp3");
 const flag = new Audio("assets/audios/flag.mp3");
 const sounds = [applause, explosion, click, flag];
-sounds.forEach((sound) => (sound.volume = 0.5));
+sounds.forEach((sound) => (sound.volume = 0.3));
 
 class Cell {
   constructor(coordinates) {
@@ -150,8 +150,7 @@ function createField() {
     numberOfBombs = 10;
   }
   numberValueCells = width * height - numberOfBombs;
-  field.style.maxWidth = `${width * 30}px `;
-  field.style.maxHeight = `${height * 30}px `;
+  field.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
   matrix.length = height;
   for (let j = 0; j < height; j++) {
     matrix[j] = [];
@@ -590,7 +589,7 @@ function toggleSound() {
   if (isMuted) {
     isMuted = false;
     sounds.forEach((sound) => {
-      sound.volume = 0.5;
+      sound.volume = 0.3;
     });
     soundImage.src = "assets/images/sound-on.png";
   } else {
