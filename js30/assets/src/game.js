@@ -4,11 +4,11 @@ document
     event.preventDefault();
   });
 
-document
+/* document
   .querySelector(".game")
   .addEventListener("touchstart", function (event) {
     event.preventDefault();
-  });
+  }); */
 
 // main logic of game
 const button = document.getElementById("emoji");
@@ -51,8 +51,17 @@ class Cell {
     this.fieldCell = fieldCell;
     this.fieldCell.addEventListener("click", this.open.bind(this));
     this.fieldCell.addEventListener("contextmenu", this.setFlag.bind(this));
-    this.fieldCell.addEventListener("touchstart", this.isLongPress.bind(this));
-    this.fieldCell.addEventListener("touchend", function () {
+    this.fieldCell.addEventListener("touchstart", (event) => {
+      this.isLongPress(event, this);
+    });
+    this.fieldCell.addEventListener("touchend", function (event) {
+      clearTimeout(pressTimer);
+      if (this.longPressFlagSet) {
+        event.preventDefault();
+        this.longPressFlagSet = false;
+      }
+    });
+    this.fieldCell.addEventListener("touchmove", function () {
       clearTimeout(pressTimer);
     });
     this.fieldCell.addEventListener("touchcancel", function () {
@@ -95,9 +104,8 @@ class Cell {
       click.play();
       isAllValueOpen();
       this.fieldCell.textContent = this.value;
-      this.fieldCell.addEventListener(
-        "touchstart",
-        handleDoubleClick.bind(this)
+      this.fieldCell.addEventListener("touchstart", () =>
+        handleDoubleClick(this)
       );
       this.fieldCell.addEventListener("mousedown", (event) => {
         handleDualMouseClick(event, this);
@@ -105,14 +113,19 @@ class Cell {
     }
     this.fieldCell.classList.remove("game__cell_not-open");
     this.fieldCell.removeEventListener("contextmenu", this.setFlag.bind(this));
-    this.fieldCell.removeEventListener(
-      "touchstart",
-      this.isLongPress.bind(this)
-    );
   }
 
-  isLongPress() {
-    pressTimer = setTimeout(setFlag.bind(this), 250);
+  isLongPress(event, cell) {
+    cell.longPressFlagSet = false;
+    pressTimer = setTimeout(() => {
+      event.preventDefault();
+      if (cell.isOpen) {
+        checkNumberNeighborsFlags(cell);
+      } else {
+        cell.setFlag(event);
+        cell.longPressFlagSet = true;
+      }
+    }, 300);
   }
 
   setFlag(event) {
@@ -636,7 +649,6 @@ function handleDualMouseClick(event, cell) {
 
 function checkNumberNeighborsFlags(cell) {
   let counter = 0;
-  console.log(cell);
   const neighbors = defineNeighbors(cell.coordinates.j, cell.coordinates.i);
   neighbors.forEach((elem) => {
     counter = elem.isFlagged ? counter + 1 : counter;
