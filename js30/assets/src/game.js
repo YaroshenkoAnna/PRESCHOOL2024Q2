@@ -4,6 +4,12 @@ document
     event.preventDefault();
   });
 
+document
+  .querySelector(".game")
+  .addEventListener("touchstart", function (event) {
+    event.preventDefault();
+  });
+
 // main logic of game
 const button = document.getElementById("emoji");
 const field = document.querySelector(".game__field");
@@ -21,6 +27,7 @@ let matrix;
 let pressTimer;
 let timer, numberOfBombs, restOfBombs, numberValueCells, width, height;
 createRanking("Beginner");
+let lastTouchTime = 0;
 //audio
 const applause = new Audio("assets/audios/applause.mp3");
 const explosion = new Audio("assets/audios/explosion.mp3");
@@ -88,6 +95,13 @@ class Cell {
       click.play();
       isAllValueOpen();
       this.fieldCell.textContent = this.value;
+      this.fieldCell.addEventListener(
+        "touchstart",
+        handleDoubleClick.bind(this)
+      );
+      this.fieldCell.addEventListener("mousedown", (event) => {
+        handleDualMouseClick(event, this);
+      });
     }
     this.fieldCell.classList.remove("game__cell_not-open");
     this.fieldCell.removeEventListener("contextmenu", this.setFlag.bind(this));
@@ -598,5 +612,36 @@ function toggleSound() {
       sound.volume = 0;
     });
     soundImage.src = "assets/images/sound-off.png";
+  }
+}
+
+//double click
+
+function handleDoubleClick(cell) {
+  const currentTime = new Date().getTime();
+  const timeDifference = currentTime - lastTouchTime;
+
+  if (timeDifference < 300 && timeDifference > 0) {
+    checkNumberNeighborsFlags(cell);
+  }
+
+  lastTouchTime = currentTime;
+}
+
+function handleDualMouseClick(event, cell) {
+  if (event.buttons === 3) {
+    checkNumberNeighborsFlags(cell);
+  }
+}
+
+function checkNumberNeighborsFlags(cell) {
+  let counter = 0;
+  console.log(cell);
+  const neighbors = defineNeighbors(cell.coordinates.j, cell.coordinates.i);
+  neighbors.forEach((elem) => {
+    counter = elem.isFlagged ? counter + 1 : counter;
+  });
+  if (counter === cell.value) {
+    neighbors.forEach((neighbor) => neighbor.open());
   }
 }
