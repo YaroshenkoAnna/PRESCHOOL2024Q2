@@ -130,7 +130,7 @@ class Cell {
 
   setFlag(event) {
     event.preventDefault();
-   
+
     if (event.type == "contextmenu") {
       if (event.pointerType == "touch") {
         return;
@@ -142,7 +142,7 @@ class Cell {
 
     if (this.isFlagged) {
       this.fieldCell.textContent = "";
-      this.isFlagged = false;
+      setTimeout(() => (this.isFlagged = false), 500);
       restOfBombs++;
     } else {
       if (navigator.vibrate) {
