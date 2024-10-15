@@ -130,7 +130,12 @@ class Cell {
 
   setFlag(event) {
     event.preventDefault();
-
+   
+    if (event.type == "contextmenu") {
+      if (event.pointerType == "touch") {
+        return;
+      }
+    }
     if (this.isOpen) {
       return;
     }
