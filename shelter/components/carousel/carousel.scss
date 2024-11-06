@@ -11,7 +11,15 @@
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    flex-wrap: wrap;
+    transition: transform 0.5s ease-in-out;
+
+    position: relative;
+  }
+
+  &__container {
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
   }
 
   &__wraper_grid {
@@ -60,11 +68,15 @@
   }
 }
 
-@include mixins.device(mixins.$sm) {
+
+@include mixins.device(mixins.$md4) {
   .carousel {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    &__wraper {
+      width: 100%;
+    }
 
     &__wraper {
       justify-content: center;
@@ -73,11 +85,7 @@
     &__button {
       order: 10;
     }
-  }
-}
 
-@include mixins.device(mixins.$md4) {
-  .carousel {
     &__button:first-child {
       margin-right: 40px;
     }

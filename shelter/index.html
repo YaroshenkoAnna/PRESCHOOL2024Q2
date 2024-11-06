@@ -16,9 +16,48 @@
     <title>Cozy House</title>
   </head>
   <body>
+    <div class="modal">
+      <div class="modal__wraper">
+        <div class="button button_rund modal__button">&times;</div>
+        <img
+          src="assets/images/pets-freddie.png"
+          alt="Freddie"
+          class="modal__image"
+        />
+        <div class="modal__content">
+          <h3 class="modal__title">Freddie</h3>
+          <h4 class="modal__subtitle">Cat - British Shorthair</h4>
+          <p class="modal__description">
+            Freddie is a little shy at first, but very sweet when he warms up.
+            He likes playing with shoe strings and bottle caps. He is quick to
+            learn the rhythms of his human’s daily life. Freddie has bounced
+            around a lot in his life, and is looking to find his forever home.
+          </p>
+          <ul class="modal__list">
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Age: </b>
+              <span id="age">2 months</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Inoculations: </b>
+              <span id="inoculations">rabies</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Diseases: </b>
+              <span id="diseases">none</span>
+            </li>
+            <li class="modal__list-item">
+              <b class="modal__name-list-item">Parasites: </b>
+              <span id="parasites"> none </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="page">
       <header class="header">
         <div class="container">
+          <span id="shadow"></span>
           <div class="header__content">
             <a href="#" class="header__logo">
               <h1 class="header__title">Cozy House</h1>
@@ -26,18 +65,11 @@
             </a>
             <nav class="header__nav nav">
               <div class="burger-menu">
-                <input
-                  type="checkbox"
-                  id="burger-checkbox"
-                  class="burger-menu__checkbox"
-                />
-                <label for="burger-checkbox" class="burger-menu__label"></label>
+                <div class="burger-menu__label"></div>
               </div>
 
               <ul class="nav__items">
-                <li class="nav__item nav__item_active">
-                  <a href="#" class="nav__link">About the shelter</a>
-                </li>
+                <li class="nav__item nav__item_active">About the shelter</li>
                 <li class="nav__item">
                   <a href="pets.html" class="nav__link">Our pets</a>
                 </li>
@@ -126,43 +158,11 @@
                   <img
                     src="assets/images/Arrow.svg"
                     alt="arrow"
-                    class="carousel__arrow carousel_arrow_left"
+                    class="carousel__arrow carousel__arrow_left"
                   />
                 </div>
-                <div class="carousel__wraper">
-                  <div class="section__card card">
-                    <img
-                      src="assets/images/pets-katrine.png"
-                      alt="pet Katrine"
-                      class="card__image"
-                    />
-                    <h4 class="card__title">Katrine</h4>
-                    <button class="card__button button button_secondary">
-                      Learn more
-                    </button>
-                  </div>
-                  <div class="section__card card">
-                    <img
-                      src="assets/images/pets-jennifer.png"
-                      alt="pet Jennifer"
-                      class="card__image"
-                    />
-                    <h4 class="card__title">Jennifer</h4>
-                    <button class="card__button button button_secondary">
-                      Learn more
-                    </button>
-                  </div>
-                  <div class="section__card card">
-                    <img
-                      src="assets/images/pets-woody.png"
-                      alt="pet Woody"
-                      class="card__image"
-                    />
-                    <h4 class="card__title">Woody</h4>
-                    <button class="card__button button button_secondary">
-                      Learn more
-                    </button>
-                  </div>
+                <div class="carousel__container">
+                  <div class="carousel__wraper" id="carousel"></div>
                 </div>
                 <div class="button button_rund carousel__button">
                   <img
@@ -370,5 +370,6 @@
       </footer>
     </div>
     <script src="assets/src/hover.js"></script>
+    <script src="assets/src/index.js"></script>
   </body>
 </html>

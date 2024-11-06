@@ -1,0 +1,57 @@
+:root {
+  --color-light-s: #fafafa;
+}
+
+/* @use "../fonts/fonts.scss"; */
+.footer {
+  height: 100px;
+}
+
+.audio-player {
+  text-align: center;
+}
+.audio-player__controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.audio-player__play-button:hover, .audio-player__pause-button:hover, .audio-player__next-button:hover, .audio-player__previous-button:hover {
+  cursor: pointer;
+}
+.audio-player__image {
+  width: auto;
+  height: 225px;
+  object-fit: cover;
+}
+
+.progress-bar {
+  width: 120px;
+  margin: 0 auto;
+}
+.progress-bar__container {
+  width: 100%;
+  background-color: #ddd;
+  height: 10px;
+  position: relative;
+  text-align: start;
+  white-space: nowrap;
+}
+.progress-bar__label {
+  height: 100%;
+  display: inline-block;
+  background-color: #4caf50;
+  width: 0%;
+  vertical-align: top;
+}
+.progress-bar__toddler {
+  display: inline-block;
+  position: relative;
+  left: -10px;
+  top: -2px;
+  height: 15px;
+  width: 15px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=styles.css.map */

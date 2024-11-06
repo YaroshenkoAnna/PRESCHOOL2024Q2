@@ -1,0 +1,345 @@
+:root {
+  --color-light-s: #fafafa;
+}
+
+@font-face {
+  font-family: "Wallpoet-Regular";
+  src: url("../fonts/Wallpoet-Regular.ttf");
+}
+@font-face {
+  font-family: "DSEG14Classic-Bold";
+  src: url("../fonts/DSEG14Classic-Bold.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins.ttf");
+}
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 900;
+  color: black;
+  margin-top: auto;
+}
+.footer__logo {
+  width: 80px;
+}
+.footer__wraper {
+  margin: 20px auto auto;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__link {
+  text-decoration: none;
+  color: #999aaa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+body {
+  height: 100%;
+}
+
+.page {
+  background: radial-gradient(circle, rgb(55, 51, 129) 0%, rgba(38, 38, 175, 0.9570421919) 50%, rgb(24, 173, 203) 100%);
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  min-height: 100vh;
+}
+.page_light {
+  background: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  background-color: rgb(172, 172, 172);
+  user-select: none;
+}
+.game__header {
+  padding: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game__wraper {
+  border: 4px solid #d0cece;
+  border-style: inset;
+  padding: 20px;
+}
+.game__rest, .game__timer {
+  background-color: black;
+  border: 2px solid #d0cece;
+  border-style: inset;
+  font-family: "DSEG14Classic-Bold";
+  font-size: 30px;
+  color: red;
+  width: 78px;
+  height: 40px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.game__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(172, 172, 172);
+  width: 45px;
+  height: 45px;
+  box-sizing: border-box;
+  border: 3px solid #d0cece;
+  border-style: outset;
+  cursor: pointer;
+  font-size: 32px;
+  transition: transform 0.3s ease;
+}
+.game__button:active {
+  transform: scale(1.1);
+}
+.game__field {
+  display: grid;
+  width: max-content;
+}
+.game__cross {
+  position: absolute;
+  width: 100%;
+  color: red;
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  font-family: sans-serif;
+  font-weight: 100;
+  top: -11px;
+}
+.game__cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(172, 172, 172);
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgb(104, 103, 103);
+  box-sizing: border-box;
+  font-family: arial;
+  font-size: 17px;
+  font-weight: 900;
+}
+.game__cell_not-open {
+  border: 3px solid #d0cece;
+  border-style: outset;
+  cursor: pointer;
+}
+.game__cell_1 {
+  color: blue;
+}
+.game__cell_2 {
+  color: green;
+}
+.game__cell_3 {
+  color: red;
+}
+.game__cell_4 {
+  color: darkblue;
+}
+.game__cell_5 {
+  color: brown;
+}
+.game__cell_6 {
+  color: cyan;
+}
+.game__cell_7 {
+  color: black;
+}
+.game__cell_8 {
+  color: gray;
+}
+.game__cell_wrong {
+  background-color: red;
+}
+.game__footer {
+  padding: 11px;
+  background-color: rgb(172, 172, 172);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game__button-image {
+  height: 30px;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font-family: "Poppins";
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1s ease;
+}
+.modal_open {
+  opacity: 1;
+  z-index: 1;
+}
+.modal__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.modal__item-title {
+  font-size: 12px;
+}
+.modal__content {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: calc(50% - 175px);
+  left: calc(50% - 175px);
+  border-radius: 10px;
+  cursor: default;
+  background-color: rgb(172, 172, 172);
+}
+.modal__content_long {
+  height: 460px;
+  top: calc(50% - 230px);
+}
+.modal__content_sm {
+  height: 170px;
+  width: 200px;
+  top: calc(50% - 85px);
+  left: calc(50% - 100px);
+}
+.modal__name {
+  margin-top: 10px;
+  width: 150px;
+  background: white;
+}
+.modal__ranking-option {
+  color: rgb(104, 103, 103);
+}
+.modal__ranking-option:hover {
+  cursor: pointer;
+}
+.modal__ranking-option_active {
+  font-weight: 900;
+  color: black;
+}
+.modal__title {
+  border-bottom: 1px solid black;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+.modal__subtitle {
+  background-color: rgb(155, 154, 154);
+  border-bottom: 1px solid black;
+  font-size: 17px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.modal__wraper {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.modal__option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px;
+}
+.modal__option_title {
+  font-weight: 900;
+  text-decoration: underline;
+}
+.modal__option-title {
+  font-size: 14px;
+  color: rgb(42, 42, 42);
+}
+.modal__option-description {
+  font-size: 10px;
+  color: rgb(104, 103, 103);
+}
+.modal__option-wraper {
+  display: flex;
+  flex-direction: column;
+}
+.modal__option-wraper_c {
+  align-items: center;
+}
+.modal__option-wraper_hide {
+  display: none;
+}
+.modal__custom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.modal__number {
+  background-color: white;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.modal__number:disabled {
+  color: rgb(177, 176, 176);
+}
+.modal__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.modal__button {
+  text-align: center;
+  padding: 3px;
+  margin: 30px 0 0;
+  border: 1px solid black;
+  border-radius: 10%;
+  background-color: #d0cece;
+}
+.modal__item_disabled {
+  color: rgb(104, 103, 103);
+}
+
+input[type=number]::-webkit-outer-spin-button {
+  background-color: lightgray;
+  border: 2px solid darkgray;
+  width: 15px;
+  height: 30px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  background-color: darkgray;
+}
+
+.game__ranking .modal__content {
+  width: 380px;
+  top: calc(50% - 190px);
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /*Firefox */
+  -ms-user-select: none;
+}
+
+/*# sourceMappingURL=game.css.map */

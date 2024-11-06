@@ -1,0 +1,318 @@
+@use "../assets/css/mixins.scss";
+
+.game {
+  background-color: rgb(172, 172, 172);
+  user-select: none;
+
+  &__header {
+    padding: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__wraper {
+    border: 4px solid #d0cece;
+    border-style: inset;
+    padding: 20px;
+  }
+
+  &__rest,
+  &__timer {
+    background-color: black;
+    border: 2px solid #d0cece;
+    border-style: inset;
+    font-family: "DSEG14Classic-Bold";
+    font-size: 30px;
+    color: red;
+    width: 78px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(172, 172, 172);
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    border: 3px solid #d0cece;
+    border-style: outset;
+    cursor: pointer;
+    font-size: 32px;
+    transition: transform 0.3s ease;
+  }
+
+  &__button:active {
+    transform: scale(1.1);
+  }
+
+  &__field {
+    display: grid;
+    width: max-content;
+  }
+
+  &__cross {
+    position: absolute;
+    width: 100%;
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    font-family: sans-serif;
+    font-weight: 100;
+    top: -11px;
+  }
+
+  &__cell {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(172, 172, 172);
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgb(104, 103, 103);
+    box-sizing: border-box;
+    font-family: arial;
+    font-size: 17px;
+    font-weight: 900;
+
+    &_not-open {
+      border: 3px solid #d0cece;
+      border-style: outset;
+      cursor: pointer;
+    }
+
+    &_1 {
+      color: blue;
+    }
+
+    &_2 {
+      color: green;
+    }
+
+    &_3 {
+      color: red;
+    }
+
+    &_4 {
+      color: darkblue;
+    }
+
+    &_5 {
+      color: brown;
+    }
+
+    &_6 {
+      color: cyan;
+    }
+
+    &_7 {
+      color: black;
+    }
+
+    &_8 {
+      color: gray;
+    }
+
+    &_wrong {
+      background-color: red;
+    }
+  }
+
+  &__footer {
+    padding: 11px;
+    background-color: rgb(172, 172, 172);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button-image {
+    height: 30px;
+  }
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font-family: "Poppins";
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1s ease;
+
+  &_open {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__item-title {
+    font-size: 12px;
+  }
+
+  &__content {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: calc(50% - 175px);
+    left: calc(50% - 175px);
+    border-radius: 10px;
+    cursor: default;
+    background-color: rgb(172, 172, 172);
+
+    &_long {
+      height: 460px;
+      top: calc(50% - 230px);
+    }
+
+    &_sm {
+      height: 170px;
+      width: 200px;
+      top: calc(50% - 85px);
+      left: calc(50% - 100px);
+    }
+  }
+
+  &__name {
+    margin-top: 10px;
+    width: 150px;
+    background: white;
+  }
+
+  &__ranking-option {
+    color: rgb(104, 103, 103);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__ranking-option_active {
+    font-weight: 900;
+    color: black;
+  }
+
+  &__title {
+    border-bottom: 1px solid black;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 0;
+  }
+
+  &__subtitle {
+    background-color: rgb(155, 154, 154);
+    border-bottom: 1px solid black;
+    font-size: 17px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__wraper {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px;
+
+    &_title {
+      font-weight: 900;
+      text-decoration: underline;
+    }
+  }
+
+  &__option-title {
+    font-size: 14px;
+    color: rgb(42, 42, 42);
+  }
+
+  &__option-description {
+    font-size: 10px;
+    color: rgb(104, 103, 103);
+  }
+
+  &__option-wraper {
+    display: flex;
+    flex-direction: column;
+
+    &_c {
+      align-items: center;
+    }
+
+    &_hide {
+      display: none;
+    }
+  }
+
+  &__custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__number {
+    background-color: white;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  &__number:disabled {
+    color: rgb(177, 176, 176);
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__button {
+    text-align: center;
+    padding: 3px;
+    margin: 30px 0 0;
+    border: 1px solid black;
+    border-radius: 10%;
+    background-color: #d0cece;
+  }
+
+  &__item_disabled {
+    color: rgb(104, 103, 103);
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  background-color: lightgray;
+  border: 2px solid darkgray;
+  width: 15px;
+  height: 30px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  background-color: darkgray;
+}
+
+.game__ranking .modal__content {
+  width: 380px;
+  top: calc(50% - 190px);
+}

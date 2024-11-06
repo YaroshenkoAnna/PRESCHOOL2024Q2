@@ -1,0 +1,12 @@
+$xs: 350px;
+$xs1: 440px;
+$sm: 550px;
+$md: 769px;
+$lg: 1024px;
+$xl: 1200px;
+
+@mixin device($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="assets/css/normalize.css " />
+    <link rel="stylesheet" href="assets/css/game.css" />
+    <link rel="icon" href="assets/images/bomb.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="page page_light">
+      <section class="main">
+        <div class="container">
+          <div class="game">
+            <div class="game__header">
+              <div class="game__rest">000</div>
+              <div class="game__button" id="emoji">🙂</div>
+              <div class="game__timer">000</div>
+            </div>
+            <div class="game__wraper">
+              <div class="game__field"></div>
+            </div>
+
+            <div class="game__footer">
+              <div class="game__button" id="ranking">
+                <img
+                  src="assets/images/rating.png"
+                  alt="rating"
+                  class="game__button-image"
+                />
+              </div>
+
+              <div class="game__button" id="sound">
+                <img
+                  src="assets/images/sound-on.png"
+                  alt="sound"
+                  class="game__button-image"
+                  id="sound-image"
+                />
+              </div>
+
+              <div class="game__button" id="settings">
+                <img
+                  src="assets/images/settings.png"
+                  alt="settings"
+                  class="game__button-image"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal game__victory">
+            <div class="modal__content modal__content_sm">
+              <h2 class="modal__subtitle" id="winTime">
+                Victory! Your Time is 999s.
+              </h2>
+              <div
+                class="modal__option-wraper modal__option-wraper_c modal__option-wraper_hide"
+                id="nameVictory"
+              >
+                <label for="name">Enter your name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="1"
+                  maxlength="20"
+                  size="10"
+                  class="modal__name"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="modal__buttons">
+                <button
+                  class="modal__button"
+                  onclick="closeModal"
+                  id="victoryOk"
+                >
+                  Ok
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal game__ranking">
+            <div class="modal__content modal__content_long">
+              <h1 class="modal__title">Ranking</h1>
+              <div class="modal__subtitle" id="ranking-option">
+                <div class="modal__ranking-option modal__ranking-option_active">
+                  Beginner
+                </div>
+                <div class="modal__ranking-option">Intermediate</div>
+                <div class="modal__ranking-option">Expert</div>
+                <div class="modal__ranking-option">Custom</div>
+              </div>
+              <div class="modal__wraper">
+                <ul class="modal__list" id="rankingList">
+                  <li class="modal__option modal__option_title">
+                    <span modal__option-title>Name</span>
+                    <span modal__option-title>Time</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                  <li class="modal__option">
+                    <span modal__option-title>Anonymous</span>
+                    <span modal__option-title>999</span>
+                  </li>
+                </ul>
+                <div class="modal__buttons">
+                  <button class="modal__button" onclick="closeModal">Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal game__settings">
+            <div class="modal__content">
+              <h1 class="modal__title">Settings</h1>
+              <h2 class="modal__subtitle">Game Type</h2>
+              <div class="modal__wraper">
+                <ul class="modal__list">
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Beginner"
+                        >Beginner</label
+                      >
+                      <span class="modal__option-description"
+                        >Field size 8x8 - 10 mines</span
+                      >
+                    </div>
+                    <input
+                      checked
+                      type="radio"
+                      id="beginner"
+                      name="settings"
+                      value="Beginner"
+                    />
+                  </li>
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Intermediate"
+                        >Intermediate</label
+                      >
+                      <span class="modal__option-description"
+                        >Field size 16x16 - 40 mines</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Intermediate"
+                      name="settings"
+                      value="Intermediate"
+                    />
+                  </li>
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Expert"
+                        >Expert</label
+                      >
+                      <span class="modal__option-description"
+                        >Field size 30x16 - 99 mines</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Expert"
+                      name="settings"
+                      value="Expert"
+                    />
+                  </li>
+                  <li class="modal__option">
+                    <div class="modal__option-wraper">
+                      <label class="modal__option-title" for="Custom"
+                        >Custom</label
+                      >
+                      <span class="modal__option-description"
+                        >Customizable field size and mine count</span
+                      >
+                    </div>
+                    <input
+                      type="radio"
+                      id="Custom"
+                      name="settings"
+                      value="Custom"
+                    />
+                  </li>
+                </ul>
+                <form class="modal__custom" id="custom-settings">
+                  <div class="modal__item modal__item_disabled">
+                    <label for="width" class="modal__item-title">Width</label>
+                    <input
+                      class="modal__number"
+                      type="number"
+                      id="width"
+                      name="width"
+                      min="8"
+                      max="30"
+                      value="8"
+                      disabled
+                    />
+                  </div>
+                  <div class="modal__item modal__item_disabled">
+                    <label for="Height" class="modal__item-title">Height</label>
+                    <input
+                      class="modal__number"
+                      type="number"
+                      id="height"
+                      name="height"
+                      min="8"
+                      max="16"
+                      value="8"
+                      disabled
+                    />
+                  </div>
+                  <div class="modal__item modal__item_disabled">
+                    <label for="mines" class="modal__item-title">Mines</label>
+                    <input
+                      class="modal__number"
+                      type="number"
+                      id="mines"
+                      name="mines"
+                      min="1"
+                      max="57"
+                      value="10"
+                      disabled
+                    />
+                  </div>
+                </form>
+                <div class="modal__buttons">
+                  <button class="modal__button" id="ok">OK</button>
+                  <button class="modal__button" onclick="closeModal">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__wraper">
+            <a href="https://rs.school/courses/javascript-ru" target="_blank"
+              ><img
+                src="assets/images/rs_school_js.svg"
+                alt="icon rs_school"
+                class="footer__logo"
+            /></a>
+
+            <p class="footer__description">
+              © 2024 All rights reserved by
+              <a class="footer__link" href="https://github.com/YaroshenkoAnna"
+                >Anna Yaroshenko</a
+              >
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="assets/src/game.js"></script>
+  </body>
+</html>
