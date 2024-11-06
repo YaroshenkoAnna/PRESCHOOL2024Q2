@@ -1,0 +1,18 @@
+@use "variables.scss";
+@use "mixins.scss";
+@use "../fonts/fonts.scss";
+@use "../../components/container/container.scss";
+@use "../../components/main/main.scss";
+@use "../../components/header/header.scss";
+@use "../../components/nav/nav.scss";
+@use "../../components/button/button.scss";
+@use "../../components/section/section.scss";
+@use "../../components/card/card.scss";
+@use "../../components/carousel/carousel.scss";
+@use "../../components/footer/footer.scss";
+@use "../../components/gallery/gallery.scss";
+@use "../../components/burger-menu/burger-menu.scss";
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,90 @@
+@use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
+
+.header {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+
+  &_white {
+    position: static;
+    background: variables.$color-light-xl;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  &__title {
+    color: variables.$color-primary;
+    font-family: Georgia;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%; /* 35.2px */
+    letter-spacing: 1.92px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__title_dark {
+    color: variables.$color-dark-l;
+  }
+
+  &__text {
+    color: variables.$color-light-xl;
+    font-family: Arial;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    padding-top: 10px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+  }
+
+  &__text_dark {
+    color: variables.$color-dark-3xl;
+  }
+
+  &__logo {
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &__logo:hover {
+    cursor: pointer;
+  }
+
+  &__logo:hover &__title {
+    color: variables.$color-light-xl;
+  }
+
+  &__logo:hover &__title_dark {
+    color: variables.$color-dark-l;
+    text-shadow: 2px 5px 5px rgb(41, 39, 39);
+  }
+
+  &__logo:hover &__text {
+    color: variables.$color-primary;
+  }
+
+  &__logo:hover &__text_dark {
+    color: variables.$color-dark-3xl;
+    text-shadow: 2px 5px 5px rgb(41, 39, 39);
+  }
+}
+
+@include mixins.device(mixins.$sm) {
+  .header {
+    &__content {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}

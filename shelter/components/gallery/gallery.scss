@@ -1,0 +1,31 @@
+@use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__wraper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
+
+    column-gap: 40px;
+    row-gap: 30px;
+    width: 100%;
+    justify-content: center;
+    max-height: 900px;
+    overflow: hidden;
+  }
+}
+
+@include mixins.device(mixins.$xxl) {
+}
+
+@include mixins.device(mixins.$md1) {
+  .gallery {
+    &__wraper {
+      max-height: 1365px;
+    }
+  }
+}

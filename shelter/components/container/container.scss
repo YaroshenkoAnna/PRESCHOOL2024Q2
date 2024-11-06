@@ -1,0 +1,24 @@
+@use "../../assets/css/mixins.scss";
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@include mixins.device(mixins.$xxl) {
+  .container {
+    padding: 0 35px;
+  }
+}
+
+@include mixins.device(mixins.$md) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@include mixins.device(mixins.$sm) {
+  .container {
+    padding: 0 10px;
+  }
+}

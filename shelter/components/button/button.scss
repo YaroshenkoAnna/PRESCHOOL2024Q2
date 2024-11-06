@@ -1,0 +1,113 @@
+@use "../../assets/css/mixins.scss";
+@use "../../assets/css/variables.scss";
+
+.button {
+  border-radius: 100px;
+  padding: 15px 45px;
+
+  color: var(--color-dark-3xl, #292929);
+  font-family: Georgia;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 22.1px */
+  letter-spacing: 1.02px;
+  white-space: nowrap;
+
+  transition: all 0.3s ease-in-out;
+
+  &_rund {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: variables.$color-dark-3xl;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 1.2px;
+    border: 2px solid variables.$color-primary;
+    text-decoration: none;
+  }
+
+  &_disabled {
+    color: variables.$color-dark-s;
+    border-color: variables.$color-dark-s;
+    pointer-events: none;
+  }
+
+  &_active {
+    background-color: variables.$color-primary;
+    pointer-events: none;
+  }
+
+   
+
+  &:hover {
+    background: variables.$color-primary-light;
+    border-color: variables.$color-primary-light;
+    cursor: pointer;
+  }
+
+  &_primary {
+    background-color: variables.$color-primary;
+  }
+
+  &_secondary {
+    background-color: variables.$color-light-s;
+    border: 2px solid variables.$color-primary;
+    padding: 14px 43px;
+  }
+}
+
+.pay-button {
+  border-radius: 9px;
+  background: variables.$color-primary;
+  padding: 10px 15px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+
+  &__number {
+    color: variables.$color-dark-l;
+
+    font-family: Georgia;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%; /* 23px */
+    letter-spacing: 1.2px;
+
+    padding-left: 45px;
+  }
+
+  &__image {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto 0;
+    
+  }
+}
+
+.paginator {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
+}
+
+@include mixins.device(mixins.$sm) {
+  .paginator {
+    column-gap: 10px;
+  }
+
+  .pay-button {
+    &__number {
+      font-size: 15px;
+      line-height: 110%; /* 16.5px */
+      letter-spacing: 0.9px;
+    }
+  }
+}
