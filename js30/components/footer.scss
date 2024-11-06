@@ -1,0 +1,27 @@
+.footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 900;
+  color: black;
+  margin-top: auto;
+
+  &__logo {
+    width: 80px;
+  }
+
+  &__wraper {
+    margin: 20px auto auto;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #999aaa;
+  }
+}

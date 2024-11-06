@@ -1,0 +1,87 @@
+.progress-bar {
+  padding: 0 10px;
+  margin: 10px auto;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  color: #f0f0f0;
+  font-size: 13px;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    /* background-color: #ddd;
+    height: 10px;
+    position: relative;
+    text-align: start;
+    white-space: nowrap; */
+  }
+
+  &__duration,
+  &__current-time {
+    white-space: nowrap;
+  }
+
+  &__label {
+    -webkit-appearance: none;
+    width: 100%;
+
+    /*  height: 5px;
+    background: rgb(128, 0, 0); 
+    border-radius: 5px;
+    outline: aqua;*/
+  }
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+/* Стили для ползунка */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Убирает стандартный вид */
+  width: 8px; /* Ширина ползунка */
+  height: 20px; /* Высота ползунка */
+  background: #081657; /* Цвет ползунка */
+  border: 1px solid rgba(253, 252, 228, 0.877);
+  border-radius: 40%; /* Делаем ползунок круглым */
+  cursor: pointer; /* Курсор при наведении */
+  transition: background 0.3s ease; /* Анимация при наведении */
+  margin-top: -7.5px; /* Выравнивание ползунка по центру трека */
+  position: relative;
+  z-index: 3;
+}
+
+/* Стили для фокуса */
+input[type="range"]:hover::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(40, 132, 218, 0.5); /* Тень при фокусе */
+}
+
+.progress-bar__progress {
+  position: absolute;
+  top: 7.5px;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-3px);
+  height: 6px;
+  border-left: 1px solid #f0f0f0;
+  background: linear-gradient(
+    to top,
+    #2322b3,
+    #3f51b5,
+    #2196f3,
+    #2538a5,
+    #2538a5,
+    #2196f3,
+    #3f51b5,
+    #2322b3
+  );
+  border-radius: 5px;
+  width: 0%; /* Начальное значение */
+
+  transition: width 0.1s ease;
+}

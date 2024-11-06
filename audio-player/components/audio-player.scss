@@ -1,0 +1,22 @@
+.audio-player {
+  text-align: center;
+
+  &__controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__play-button:hover,
+  &__pause-button:hover,
+  &__next-button:hover,
+  &__previous-button:hover {
+    cursor: pointer;
+  }
+
+  &__image {
+    width: auto;
+    height: 225px;
+    object-fit: cover;
+  }
+}

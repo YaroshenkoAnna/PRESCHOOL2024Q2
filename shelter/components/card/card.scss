@@ -1,0 +1,172 @@
+@use "../../assets/css/variables.scss";
+@use "../../assets/css/mixins.scss";
+
+.card {
+  border-radius: 9px;
+  background: variables.$color-light-s;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+
+  &:hover {
+    background: variables.$color-light-xl;
+    cursor: pointer;
+  }
+
+  &:hover &__button {
+    background: variables.$color-primary-light;
+    border-color: variables.$color-primary-light;
+  }
+
+  &__title {
+    color: variables.$color-dark-l;
+    text-align: center;
+    font-family: Georgia;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    padding: 25px 0 29px;
+  }
+
+  &__button {
+    margin-bottom: 30px;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.6);
+  position: fixed;
+  z-index: 1;
+  color: #000;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: 400;
+  overflow: hidden;
+
+  &_open {
+    display: flex;
+  }
+
+  &__wraper {
+    max-width: 900px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background: variables.$color-light-s;
+    border-radius: 9px;
+  }
+
+  &__content {
+    padding: 50px 20px 30px;
+  }
+
+  &__image {
+    width: 500px;
+    height: 500px;
+    align-self: center;
+  }
+
+  &__title {
+    font-size: 35px;
+    line-height: 130%; /* 45.5px */
+    letter-spacing: 2.1px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    line-height: 115%; /* 23px */
+    letter-spacing: 1.2px;
+    margin-top: 10px;
+  }
+
+  &__description,
+  &__list {
+    font-size: 15px;
+    line-height: 110%; /* 23px */
+    letter-spacing: 0.9px;
+    margin: 40px 0;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__list-item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__list-item::before {
+    content: " \25CF";
+    font-size: 8px;
+    color: variables.$color-primary-light;
+    padding-left: 10px;
+  }
+
+  &__name-list-item {
+    font-weight: 900;
+  }
+
+  &__button {
+    position: absolute;
+    right: -48px;
+    top: -48px;
+    font-size: 30px;
+  }
+}
+
+@include mixins.device(mixins.$md1) {
+  .modal {
+    &__wraper {
+      max-width: 630px;
+    }
+
+    &__image {
+      width: 350px;
+      height: 350px;
+    }
+
+    &__description {
+      font-size: 13px;
+      line-height: 110%; /* 23px */
+      letter-spacing: 0.78px;
+      margin: 20px 0;
+    }
+
+    &__content {
+      padding: 10px;
+    }
+  }
+}
+
+@include mixins.device(mixins.$sm2) {
+  .modal {
+    &__wraper {
+      max-width: 240px;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__title,
+    &__subtitle {
+      text-align: center;
+    }
+
+    &__description {
+      text-align: justify;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use "variables.scss";
+@use "mixins.scss";
+@use "../fonts/fonts.scss";
+@use "../../components/container/container.scss";
+@use "../../components/main/main.scss";
+@use "../../components/header/header.scss";
+@use "../../components/nav/nav.scss";
+@use "../../components/button/button.scss";
+@use "../../components/section/section.scss";
+@use "../../components/card/card.scss";
+@use "../../components/carousel/carousel.scss";
+@use "../../components/footer/footer.scss";
+@use "../../components/gallery/gallery.scss";
+@use "../../components/burger-menu/burger-menu.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.blackout {
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.transition-left {
+  animation-name: slide-left;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.transition-right {
+  animation-name: slide-right;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  
+}
+
+@keyframes slide-right {
+  from {
+    right: 0;
+  }
+  to {
+    right: -100%;
+  }
+}
+@keyframes slide-left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+.hide-right {
+  margin-right: -100%;
+}
+
+.hide-left {
+  margin-left: -100%;
+}

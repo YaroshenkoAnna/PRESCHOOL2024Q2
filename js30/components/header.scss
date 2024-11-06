@@ -1,0 +1,37 @@
+@use "../assets/css/mixins.scss";
+
+.header {
+  &__wraper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+  }
+
+  &__title {
+    font-size: 3em;
+    color: #8195a8;
+    -webkit-text-stroke: 2px #000;
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      text-shadow: 1px 1px 2px #000000, 2px 2px 2px white, 3px 3px 2px black,
+        4px 4px 4px black;
+    }
+
+    &_black_and_white {
+      color: #ebebeb;
+    }
+  }
+}
+
+@include mixins.device(mixins.$xs) {
+  .header {
+    &__wraper {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
